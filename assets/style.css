@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --size-sm: 5px;
+    --size-md: 10px;
+    --size-lg: 15px;
+}
+
+body {
+    background: #171a21;
+    background: url(https://store.cloudflare.steamstatic.com/public/images/v6/colored_body_top2.png) center top fixed no-repeat #1b2838;
+    color: #c6d4df;
+    font-family: "Roboto", sans-serif;
+}
+
+a {
+    color: inherit;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.menu,
+.games {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.menu {
+    justify-content: space-between;
+    align-items: center;
+}
+.menu #logo {
+    margin: 20px auto 20px 0;
+}
+.menu a {
+    font-size: 14px;
+    margin-right: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.game {
+    background-color: rgba(64, 81, 99, 0.9);
+    padding: var(--size-lg);
+    margin: 0 0 var(--size-md) 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.game:hover {
+    background-color: rgba(75, 94, 114, 0.9);
+}
+.game .cover {
+    margin: 0 0 var(--size-lg) 0;
+}
+.game .cover img {
+    width: 100%;
+}
+.game .title {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0 0 var(--size-lg) 0;
+}
+.game ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.game li {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 2;
+}
+.game li a {
+    margin-right: 3px;
+    padding: 2px 5px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #8f98a0;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.game li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 680px;
+    }
+}
+@media (min-width: 1024px) {
+    .container {
+        width: 992px;
+    }
+    .game {
+        width: calc( 50% - var(--size-md) );
+        margin: 0 var(--size-md) var(--size-md) 0;
+    }
+}
+@media (min-width: 1920px) {
+    .container {
+        width: 1200px;
+    }
+    .game {
+        width: calc( 33% - var(--size-lg) );
+        margin: 0 var(--size-lg) var(--size-lg) 0;
+    }
+}
