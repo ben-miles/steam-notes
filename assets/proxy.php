@@ -10,7 +10,8 @@ if(empty($_POST)){
 $endpoint = $_POST["endpoint"];
 $steam_user_id = $_POST["steam_user_id"];
 
-$url = $_GET['url'];
+// Get api key, etc
+require_once "secret.php";
 
 // Get API endpoint URI from $_POST data
 $steam_domain = "https://api.steampowered.com/";
