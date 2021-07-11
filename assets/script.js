@@ -141,55 +141,53 @@ for(let i = 0; i < games.length; i++) {
 
 };
 
-// See : https://www.reddit.com/r/Steam/comments/1u4h90/api_to_get_the_steam_banners_for_games/
-// use : http://steamcommunity.com/profiles/<steam_id_64>/games?tab=all&xml=1
-// where :  steam_id_64 = 76561197995679405 (my steamid64)
-function getSteamGames(){
-    var xml = "https://steamcommunity.com/profiles/76561197995679405/games?tab=all&xml=1";
-    var xmlencoded = encodeURIComponent(xml);
-    // console.log(xmlencoded);
-
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-       if (this.readyState == 4 && this.status == 200) {
-            var parser = new DOMParser();
-            var xmlDoc = parser.parseFromString(this.responseText, "text/xml");
-            // console.log("Success: ", this.responseText);
-            // console.log("xmldoc: ", xmlDoc);
-            // console.log(xmlDoc.getElementsByTagName("name")[2].childNodes[0].nodeValue);
-        var games = xmlDoc.getElementsByTagName("game");
-        var gamesList = [];
-        for(const game of games){
-            // console.log(game);
-            var gameObj = {};
-            gameObj.appID = game.getElementsByTagName("appID")[0].textContent;
-            gameObj.name = game.getElementsByTagName("name")[0].textContent;
-            gameObj.logo = game.getElementsByTagName("logo")[0].textContent;
-            gameObj.storeLink = game.getElementsByTagName("storeLink")[0].textContent;
-
-            gameObj.statsLink = game.getElementsByTagName("statsLink").length > 0 ? game.getElementsByTagName("statsLink")[0].textContent : null;
-            gameObj.globalStatsLink = game.getElementsByTagName("globalStatsLink").length > 0 ? game.getElementsByTagName("globalStatsLink")[0].textContent : null;
-            gameObj.hoursOnRecord = game.getElementsByTagName("hoursOnRecord").length > 0 ? game.getElementsByTagName("hoursOnRecord")[0].textContent : null;
-            gameObj.hoursLast2Weeks = game.getElementsByTagName("hoursLast2Weeks").length > 0 ? game.getElementsByTagName("hoursLast2Weeks")[0].textContent : null;
-
-            gamesList.push(gameObj);
-            // if(hoursLast2Weeks){
-            //     console.log(name);
+function getSteamData(endpoint, steam_user_id = "76561197995679405"){ // TODO: make this a more universal ajax function... accept ENDPOINT, STEAM_USER_ID
+    var request = new XMLHttpRequest();
+    request.open("POST", "/assets/proxy.php", true);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.responseType = "json";
+    request.send("endpoint=" + endpoint + "&steam_user_id=" + steam_user_id);
+    request.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+            // TODO: If not JSON (if first char != "{"), throw unexepected result error
+            switch(endpoint) {
+                case "GetPlayerSummaries":
+                    var data = this.response.response.players;
+                    break;
+                case "GetUserStatsForGame":
+                    var data = this.response.playerstats;
+                    break;
+                case "GetOwnedGames":
+                    var data = this.response.response.games;
+                    break;
+                case "GetRecentlyPlayedGames":
+                    var data = this.response.response.games;
+                    break;
+            }
+            console.log(endpoint, data);
+            // var gamesList = [];
+            // for(const game of games){
+            //     console.log(game);
+            //     var gameObj = {};
+            //     gameObj.appID = game.getElementsByTagName("appID")[0].textContent;
+            //     gameObj.name = game.getElementsByTagName("name")[0].textContent;
+            //     gameObj.logo = game.getElementsByTagName("logo")[0].textContent;
+            //     gameObj.storeLink = game.getElementsByTagName("storeLink")[0].textContent;
+            //     gameObj.statsLink = game.getElementsByTagName("statsLink").length > 0 ? game.getElementsByTagName("statsLink")[0].textContent : null;
+            //     gameObj.globalStatsLink = game.getElementsByTagName("globalStatsLink").length > 0 ? game.getElementsByTagName("globalStatsLink")[0].textContent : null;
+            //     gameObj.hoursOnRecord = game.getElementsByTagName("hoursOnRecord").length > 0 ? game.getElementsByTagName("hoursOnRecord")[0].textContent : null;
+            //     gameObj.hoursLast2Weeks = game.getElementsByTagName("hoursLast2Weeks").length > 0 ? game.getElementsByTagName("hoursLast2Weeks")[0].textContent : null;
+            //     gamesList.push(gameObj);
             // }
-            // if(hoursOnRecord>100){
-            //     console.log(name, hoursOnRecord);
-            // }
-          }
-          console.log(gamesList);
+            // console.log(gamesList);
         }
-        // else {
-        //   console.log("Error code: ", this.status);
-        // }
-      };
- 
-    xhttp.open("GET", "http://steam-browser-home-page.test/assets/ba-simple-proxy.php?url=" + xmlencoded + "&mode=native", true);
-    xhttp.send();
+        // TODO: else, throw connection error
+    };
+    
+    
 }
 
-getSteamGames();
-
+getSteamData("GetPlayerSummaries");
+getSteamData("GetUserStatsForGame");
+getSteamData("GetOwnedGames");
+getSteamData("GetRecentlyPlayedGames");
