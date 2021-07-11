@@ -29,7 +29,7 @@
 		<div class="container">
 			<div class="games"></div>
 			<div id="app">
-				{{ message }}
+				{{ games }}
 			</div>
 		</div>
 	</section>
