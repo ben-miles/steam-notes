@@ -1,3 +1,10 @@
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue!'
+    }
+})
+
 let games = [
     {
         title: "No Man's Sky",

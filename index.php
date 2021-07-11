@@ -6,6 +6,7 @@
 
 	<meta charset="utf-8">
 	<title>Ben's Steam Home Page</title>
+	<script src="https://unpkg.com/vue"></script>
 	<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
 	<link rel="stylesheet" href="assets/style.css">
 
@@ -27,6 +28,9 @@
 	<section class="body">
 		<div class="container">
 			<div class="games"></div>
+			<div id="app">
+				{{ message }}
+			</div>
 		</div>
 	</section>
 
