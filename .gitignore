@@ -334,4 +334,4 @@ ASALocalRun/
 .localhistory/
 
 # Custom Ignores
-/assets/secret.php
+/assets/config.php
