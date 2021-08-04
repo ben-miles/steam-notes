@@ -1,4 +1,4 @@
-		<script type="text/javascript" src="./assets/script.js"></script>
+		<script type="text/javascript" src="<?php echo $domain; ?>/assets/script.js"></script>
 
 	</body>
 

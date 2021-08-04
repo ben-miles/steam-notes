@@ -20,7 +20,7 @@
 					<a id="logo" href="https://store.steampowered.com/">
 						<img src="assets/steam_globalheader_logo.png" />
 					</a>
-					<a	href="https://google.com/">Google</a>
+					<a href="https://google.com/">Google</a>
 				</div>
 			</div>
 	</section>
