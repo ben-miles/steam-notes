@@ -20,6 +20,19 @@
 					<a id="logo" href="https://store.steampowered.com/">
 						<img src="assets/steam_globalheader_logo.png" />
 					</a>
+					<?php
+						if(!isset($_SESSION['steamid'])) {
+							loginbutton(); //login button
+						}  else {
+							include ('steamauth/userInfo.php'); //To access the $steamprofile array
+							//Logout Button
+							logoutbutton(); 
+							// Profile Avatar
+							echo '<a href="' . $_SESSION['steam_profileurl'] . '" class="user_avatar playerAvatar ">
+									<img src="' . $_SESSION['steam_avatar'] . '">
+								</a>';
+						}     
+						?>
 					<a href="https://google.com/">Google</a>
 				</div>
 			</div>

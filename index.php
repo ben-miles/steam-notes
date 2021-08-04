@@ -1,5 +1,6 @@
 <?php
 
+require_once 'steamauth/steamauth.php';
 // The Simplest PHP Router
 // https://www.taniarascia.com/the-simplest-php-router/
 
