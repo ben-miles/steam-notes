@@ -126,57 +126,6 @@ var app = new Vue({
                 // TODO: else, throw connection error
             };
         },
-        buildSteamGamesList: function() {
-            let gamesContainer = document.getElementsByClassName("games")[0];
-            for(let i = 0; i < games.length; i++) {
-
-                let game = document.createElement("div");
-                game.className = "game";
-                game.id = games[i].title.toLowerCase().replace(/[ ':]/g, "");
-                gamesContainer.appendChild(game);
-
-                let coverLink = document.createElement("a");
-                coverLink.className = "cover";
-                coverLink.href = `https://store.steampowered.com/app/${games[i].steamId}/`;
-                coverLink.target = "_blank"
-                game.appendChild(coverLink);
-
-                let coverImage = document.createElement("img");
-                coverImage.src = `https://cdn.cloudflare.steamstatic.com/steam/apps/${games[i].steamId}/header.jpg`;
-                coverLink.appendChild(coverImage);
-
-                let title = document.createElement("h2");
-                title.className = "title";
-                title.innerHTML = games[i].title;
-                game.appendChild(title);
-
-                let links = document.createElement("ul");
-                game.appendChild(links);
-
-                for(let ii = 0; ii < games[i].links.length; ii++) {
-
-                    let link = document.createElement("li");
-                    links.appendChild(link);
-
-                    let url = document.createElement("a");
-                    url.href = games[i].links[ii].url;
-                    url.target="_blank";
-                    url.innerHTML = games[i].links[ii].label;
-                    link.appendChild(url);
-
-                }
-
-                let link = document.createElement("li");
-                links.appendChild(link); 
-
-                let googleLink = document.createElement("a");
-                googleLink.href = `https://www.google.com/search?q=${games[i].title}, `
-                googleLink.target="_self";
-                googleLink.innerHTML = `Google: ${games[i].title}`;
-                link.appendChild(googleLink);
-
-            };
-        }
     },
     beforeMount(){
         this.getSteamData("GetPlayerSummaries"),
