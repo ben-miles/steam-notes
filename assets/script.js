@@ -95,7 +95,10 @@ let games = [
 var app = new Vue({
     el: '#app',
     data: {
-        games: games
+        games_all: {},
+        games_pinned: [],
+        games_recent: {},
+        user: {}
     },
     methods:{
         getSteamData: function(endpoint) {
@@ -127,6 +130,11 @@ var app = new Vue({
             };
             xhr.send();
         },
+        pin: function(data){
+            this.games_pinned.push(data);
+        }, 
+        update_alert: function() {
+            alert('updated!');
         },
     },
     beforeMount(){
@@ -142,6 +150,8 @@ var app = new Vue({
         //  this.buildSteamGamesList();
         // console.log(this.games_recent);
      },
+     updated(){
+        //  this.update_alert();
      }
 })
 
