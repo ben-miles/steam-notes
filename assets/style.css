@@ -108,6 +108,9 @@ a {
         width: calc( 50% - var(--size-md) );
         margin: 0 var(--size-md) var(--size-md) 0;
     }
+    .game.recent {
+        width: calc( 25% - var(--size-md) );
+    }
 }
 @media (min-width: 1920px) {
     .container {
