@@ -98,43 +98,50 @@ var app = new Vue({
         games: games
     },
     methods:{
-        getSteamData: function(endpoint, steam_user_id = "76561197995679405") {
-            var request = new XMLHttpRequest();
-            request.open("POST", "/assets/proxy.php", true);
-            request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            request.responseType = "json";
-            request.send("endpoint=" + endpoint + "&steam_user_id=" + steam_user_id);
-            request.onreadystatechange = function() {
-                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                    // TODO: If not JSON (if first char != "{"), throw unexepected result error
-                    switch(endpoint) {
-                        case "GetPlayerSummaries":
-                            var data = this.response.response.players;
-                            break;
-                        case "GetUserStatsForGame":
-                            var data = this.response.playerstats;
-                            break;
-                        case "GetOwnedGames":
-                            var data = this.response.response.games;
-                            break;
-                        case "GetRecentlyPlayedGames":
-                            var data = this.response.response.games;
-                            break;
-                    }
-                    console.log(endpoint, data);
+        getSteamData: function(endpoint) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/assets/proxy.php?endpoint=' + endpoint + '&steam_user_id=' + steam_user_id, true);
+            xhr.responseType = 'json';
+            xhr.onload = function() {
+              var status = xhr.status;
+              if (status === 200) {
+                // callback(null, xhr.response);
+                switch(endpoint) {
+                    case "GetPlayerSummaries":
+                        app.user = this.response.response.players[0];
+                        break;
+                    // case "GetUserStatsForGame":
+                    //     app.maybenotgonnausethis = this.response.playerstats;
+                    //     break;
+                    case "GetOwnedGames":
+                        app.games_all = this.response.response.games;
+                        break;
+                    case "GetRecentlyPlayedGames":
+                        app.games_recent = this.response.response.games;
+                        break;
                 }
-                // TODO: else, throw connection error
+              } else {
+                // callback(status, xhr.response);
+                console.log('fail');
+              }
             };
+            xhr.send();
+        },
         },
     },
     beforeMount(){
-        this.getSteamData("GetPlayerSummaries"),
-        this.getSteamData("GetUserStatsForGame");
-        this.getSteamData("GetOwnedGames");
-        this.getSteamData("GetRecentlyPlayedGames");
+        if(steam_user_id){
+            this.getSteamData("GetPlayerSummaries");
+            // this.getSteamData("GetUserStatsForGame");
+            this.getSteamData("GetOwnedGames");
+            this.getSteamData("GetRecentlyPlayedGames");
+        }
      },
      mounted(){
-         this.buildSteamGamesList();
+        // this.clickTest();
+        //  this.buildSteamGamesList();
+        // console.log(this.games_recent);
+     },
      }
 })
 

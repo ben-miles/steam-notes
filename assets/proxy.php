@@ -1,16 +1,16 @@
 <?php
-
-// If POST is empty, fuck right off
-if(empty($_POST)){
+session_start();
 require "config.php";
+// If GET is empty, fuck right off
+if(empty($_GET)){
   echo "Error: Uh uh uh, you didn't say the magic word!";
   exit;
 }
 
-// Get $_POST data
-$endpoint = $_POST["endpoint"];
-$steam_user_id = $_POST["steam_user_id"];
-
+// Get $_GET data
+$endpoint = $_GET["endpoint"];
+// $steam_user_id = $_GET["steam_user_id"];
+$steam_user_id = $_SESSION["steamid"];
 
 // Get API endpoint URI from $_POST data
 $steam_domain = "https://api.steampowered.com/";
@@ -55,7 +55,7 @@ foreach ( $header_text as $header ) {
     header( $header );
   }
 }
-  
+
 print $contents;
 
 ?>
