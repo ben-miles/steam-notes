@@ -188,3 +188,15 @@ var app = new Vue({
          this.buildSteamGamesList();
      }
 })
+
+var modalContainer = document.getElementsByClassName("modal-container")[0];
+var modalClose = document.getElementById("modal-close");
+var modalOpen = document.getElementById("modal-open");
+modalClose.addEventListener('click', function(event){
+	modalContainer.style.display = 'none';
+});
+modalOpen.addEventListener('click', function(event){
+	modalContainer.style.display = 'flex';
+});
+
+
