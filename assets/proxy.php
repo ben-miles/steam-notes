@@ -2,6 +2,7 @@
 
 // If POST is empty, fuck right off
 if(empty($_POST)){
+require "config.php";
   echo "Error: Uh uh uh, you didn't say the magic word!";
   exit;
 }
@@ -10,8 +11,6 @@ if(empty($_POST)){
 $endpoint = $_POST["endpoint"];
 $steam_user_id = $_POST["steam_user_id"];
 
-// Get api key, etc
-require_once "secret.php";
 
 // Get API endpoint URI from $_POST data
 $steam_domain = "https://api.steampowered.com/";
