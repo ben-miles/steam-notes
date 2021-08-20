@@ -2,9 +2,9 @@
 // print_r($_SESSION);
 
 if(!isset($_SESSION['steamid'])) {
-    echo "<script>var steam_user_id = null;</script>";
+    echo "<script type=\"application/javascript\">var steam_user_id = null;</script>";
 } else {
-    echo "<script>var steam_user_id = " . $_SESSION['steamid'] . ";</script>";
+    echo "<script type=\"application/javascript\">var steam_user_id = " . $_SESSION['steamid'] . ";</script>";
 }
 
 ?>
