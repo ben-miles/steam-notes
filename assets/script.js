@@ -133,6 +133,9 @@ var app = new Vue({
         pin: function(data){
             this.games_pinned.push(data);
         }, 
+        unpin: function(index){
+            this.games_pinned.splice(index, 1);
+        }, 
         update_alert: function() {
             alert('updated!');
         },
