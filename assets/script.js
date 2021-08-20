@@ -158,6 +158,11 @@ var app = new Vue({
 var modalContainer = document.getElementsByClassName("modal-container")[0];
 var modalClose = document.getElementById("modal-close");
 var modalOpen = document.getElementById("modal-open");
+modalContainer.addEventListener('click', function(event){
+    if( event.target === this ){
+        modalContainer.style.display = 'none';
+    }
+});
 modalClose.addEventListener('click', function(event){
 	modalContainer.style.display = 'none';
 });
