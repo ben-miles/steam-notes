@@ -36,18 +36,20 @@ if(!isset($_SESSION['steamid'])) {
                     <div class="modal-body">
                         <div class="games">
                             <h2 style="width: 100%;">Games: Recent</h2>
-                            <div v-for="game in games_recent" class="game recent" :id="game.appid" v-on:click="pin({appid:game.appid, name:game.name})">
+                            <div v-for="game in games_recent" class="game recent" :id="game.appid">
                                 <!-- a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" -->
                                     <img :src="'https://cdn.cloudflare.steamstatic.com/steam/apps/' + game.appid + '/header.jpg'">
                                 <!-- /a -->
                                 <h2 class="title">{{game.name}}</h2>
+                                <button class="pin" v-on:click="pin({appid:game.appid, name:game.name})">Pin</button>
                             </div>
                             <h2 style="width: 100%;">Games: All</h2>
-                            <div v-for="game in games_all" class="game all" :id="game.appid" v-on:click="pin({appid:game.appid, name:game.name})">
+                            <div v-for="game in games_all" class="game all" :id="game.appid">
                                 <!-- a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" -->
                                     <img :src="'https://cdn.akamai.steamstatic.com/steam/apps/' + game.appid + '/capsule_231x87.jpg'">
                                 <!-- /a -->
                                 <h2 class="title">{{game.name}}</h2>
+                                <button class="pin" v-on:click="pin({appid:game.appid, name:game.name})">Pin</button>
                             </div>
                         </div>
                     </div>
