@@ -15,7 +15,7 @@ if(!isset($_SESSION['steamid'])) {
                     <button id="modal-open">Open</button>
                 
                     <h2 style="width: 100%;">Games: Pinned</h2>
-                    <div v-for="(game, index) in games_pinned" class="game pinned" :id="game.appid" v-bind:index="index" v-bind:key="game.appid">
+                    <div v-for="(game, index) in games_pinned" class="game pinned" :id="'game_' + game.appid" :index="index" :key="game.appid">
                         <!-- a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" -->
                             <img :src="'https://cdn.cloudflare.steamstatic.com/steam/apps/' + game.appid + '/header.jpg'">
                         <!-- /a -->
