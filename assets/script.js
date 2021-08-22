@@ -133,6 +133,11 @@ var app = new Vue({
         pin: function(data){
             this.games_pinned.push(data);
         }, 
+        confirmUnpin: function(index, event){
+            var thisPinnedGame = document.getElementsByClassName("pinned")[index];
+            var confirmationDialogue = thisPinnedGame.getElementsByClassName("confirm-unpin")[0];
+            confirmationDialogue.style.display = 'flex';
+        },
         unpin: function(index){
             this.games_pinned.splice(index, 1);
         }, 
