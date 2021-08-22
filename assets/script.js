@@ -136,9 +136,13 @@ var app = new Vue({
         unpin: function(index){
             this.games_pinned.splice(index, 1);
         }, 
-        update_alert: function() {
+        update_alert: function(){
             alert('updated!');
         },
+        saveData: function(index, event){
+                this.games_pinned[index].notes = event.target.value;
+                // TODO: Add SQL storage
+        }
     },
     beforeMount(){
         if(steam_user_id){

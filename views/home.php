@@ -21,6 +21,8 @@ if(!isset($_SESSION['steamid'])) {
                         <!-- /a -->
                         <h2 class="title">{{game.name}}</h2>
                         <button class="unpin" v-on:click="unpin(index)">X</button>
+                        <label :for="'notes_' + game.appid">Notes:</label>
+                        <textarea :id="'notes_' + game.appid" :name="'notes_' + game.appid" rows="4" v-on:input="saveData(index, $event)"></textarea>
                     </div>
 
                 </div>
