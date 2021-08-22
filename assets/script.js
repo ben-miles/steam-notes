@@ -140,8 +140,12 @@ var app = new Vue({
             alert('updated!');
         },
         saveData: function(index, event){
+            // Prevent saving on every keypress, by resetting a timer...
+            window.clearTimeout(timer);
+            timer = window.setTimeout(function(){
                 this.games_pinned[index].notes = event.target.value;
                 // TODO: Add SQL storage
+            }, 3000); 
         }
     },
     beforeMount(){
@@ -162,6 +166,7 @@ var app = new Vue({
      }
 })
 
+var timer;
 var modalContainer = document.getElementsByClassName("modal-container")[0];
 var modalClose = document.getElementById("modal-close");
 var modalOpen = document.getElementById("modal-open");
