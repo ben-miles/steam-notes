@@ -1,6 +1,7 @@
 <?php
 
 require_once 'assets/config.php';
+require_once 'assets/db.php';
 require_once 'steamauth/steamauth.php';
 
 // The Simplest PHP Router
