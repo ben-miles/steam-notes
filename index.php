@@ -17,6 +17,9 @@ require_once 'steamauth/steamauth.php';
 // - Style buttons
 
 $request = $_SERVER['REQUEST_URI'];
+// CHANGELOG
+// - v1 - 2021/08/28 - Brief abstract + features here
+
 
 switch ($request) {
     case '' :
