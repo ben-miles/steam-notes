@@ -6,6 +6,15 @@ require_once 'steamauth/steamauth.php';
 
 // The Simplest PHP Router
 // https://www.taniarascia.com/the-simplest-php-router/
+// TODOs
+// - Move router to its own file in assets
+// - Add filtering to games list modal
+// - Finish styling games list modal
+// - Add MySQL save / retrieve functions
+// - Give visual/text feedback on DB save
+// - Add help view
+// - Add tour (?)
+// - Style buttons
 
 $request = $_SERVER['REQUEST_URI'];
 
