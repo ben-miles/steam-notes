@@ -1,13 +1,11 @@
 <?php
 
-require_once 'assets/config.php';
-require_once 'assets/db.php';
-require_once 'steamauth/steamauth.php';
+require 'assets/config.php';
+require 'assets/db.php';
+require 'steamauth/steamauth.php';
+require 'assets/router.php';
 
-// The Simplest PHP Router
-// https://www.taniarascia.com/the-simplest-php-router/
 // TODOs
-// - Move router to its own file in assets
 // - Add filtering to games list modal
 // - Finish styling games list modal
 // - Add MySQL save / retrieve functions
@@ -16,20 +14,7 @@ require_once 'steamauth/steamauth.php';
 // - Add tour (?)
 // - Style buttons
 
-$request = $_SERVER['REQUEST_URI'];
 // CHANGELOG
 // - v1 - 2021/08/28 - Brief abstract + features here
-
-
-switch ($request) {
-    case '' :
-    case '/' :
-        require __DIR__ . '/views/home.php';
-        break;
-    default:
-        http_response_code(404);
-        require __DIR__ . '/views/404.php';
-        break;
-}
 
 ?>
