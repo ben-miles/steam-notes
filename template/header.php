@@ -8,16 +8,13 @@
 	<script src="https://unpkg.com/vue"></script>
 	<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
 	<link rel="stylesheet" href="assets/style.css">
+	<?php 
+		$steamID = !isset($_SESSION['steamid']) ? "null" : $_SESSION['steamid'];
+		echo "<script type=\"application/javascript\">var steam_user_id = " . $steamID . ";</script>";
+	?>
 </head>
 
 <body>
-	<?php 
-	if(!isset($_SESSION['steamid'])) {
-    	echo "<script>var steam_user_id = null;</script>";
-	} else {
-		echo "<script>var steam_user_id = " . $_SESSION['steamid'] . ";</script>";
-	} 
-	?>
 	<div id="app">
 
 		<section id="header">
