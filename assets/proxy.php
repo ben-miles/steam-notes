@@ -1,6 +1,8 @@
 <?php
+
 session_start();
 require "config.php";
+
 // If GET is empty, fuck right off
 if(empty($_GET)){
   echo "Error: Uh uh uh, you didn't say the magic word!";
@@ -38,6 +40,7 @@ switch($endpoint){
     break;
 }
 
+// cURL
 $ch = curl_init( $url );
 curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );
 curl_setopt( $ch, CURLOPT_HEADER, true );
@@ -56,6 +59,7 @@ foreach ( $header_text as $header ) {
   }
 }
 
+// Return remote data to AJAX request
 print $contents;
 
 ?>

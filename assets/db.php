@@ -1,5 +1,8 @@
 <?php
-// "The blunt singleton", a PDO Wrapper by PHP Delusions, via https://phpdelusions.net/pdo/pdo_wrapper/#singleton
+
+// "The blunt singleton" by PHP Delusions
+// https://phpdelusions.net/pdo/pdo_wrapper/#singleton
+
 class DB
 {
     protected static $instance = null;

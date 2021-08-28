@@ -1,6 +1,6 @@
-<?php require "./template/header.php"; 
-// print_r($_SESSION);
+<?php 
 
+require "./template/header.php";
 
 ?>
 

@@ -1,4 +1,5 @@
 <?php
+
 // "The Simplest PHP Router" by Tania Rascia
 // https://www.taniarascia.com/the-simplest-php-router/
 
