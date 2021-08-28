@@ -1,11 +1,6 @@
 <?php require "./template/header.php"; 
 // print_r($_SESSION);
 
-if(!isset($_SESSION['steamid'])) {
-    echo "<script type=\"application/javascript\">var steam_user_id = null;</script>";
-} else {
-    echo "<script type=\"application/javascript\">var steam_user_id = " . $_SESSION['steamid'] . ";</script>";
-}
 
 ?>
 
