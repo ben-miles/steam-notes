@@ -54,8 +54,24 @@ var app = new Vue({
             // Prevent saving on every keypress, by resetting a timer...
             window.clearTimeout(timer);
             timer = window.setTimeout(function(){
-                this.games_pinned[index].notes = event.target.value;
-                // TODO: Add SQL storage
+                // Save to Vue Data
+                app.games_pinned[index].notes = event.target.value;
+                
+                // Save to DB
+                dataString = JSON.stringify(app.games_pinned);
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '/assets/save.php?data=' + dataString, true);
+                xhr.onload = function() {
+                    var status = xhr.status;
+                    if (status === 200) {
+                        console.log(xhr.responseText);
+                        // callback(null, xhr.response);
+                    } else {
+                        // callback(status, xhr.response);
+                        console.log('fail');
+                    }
+                };
+                xhr.send();
             }, 3000); 
         }
     },
