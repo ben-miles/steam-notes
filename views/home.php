@@ -1,8 +1,4 @@
-<?php 
-
-require "./template/header.php";
-
-?>
+<?php require "./template/header.php"; ?>
 
             <section class="body">
                 <div class="container">
