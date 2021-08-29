@@ -38,6 +38,8 @@ var app = new Vue({
         },
         pin: function(data){
             this.games_pinned.push(data);
+			// Save to DB
+			app.saveToDB();
         }, 
         confirmUnpin: function(index, event){
             var thisPinnedGame = document.getElementsByClassName("pinned")[index];
@@ -46,6 +48,8 @@ var app = new Vue({
         },
         unpin: function(index){
             this.games_pinned.splice(index, 1);
+			// Save to DB
+			app.saveToDB();
         }, 
         update_alert: function(){
             alert('updated!');
@@ -54,28 +58,34 @@ var app = new Vue({
             // Prevent saving on every keypress, by resetting a timer...
             window.clearTimeout(timer);
             timer = window.setTimeout(function(){
-                // Save to Vue Data
+                
+				// Save to Vue Data
                 app.games_pinned[index].notes = event.target.value;
                 
                 // Save to DB
-                dataString = JSON.stringify(app.games_pinned);
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', '/assets/save.php?data=' + dataString, true);
-                xhr.onload = function() {
-                    var status = xhr.status;
-                    if (status === 200) {
-                        console.log(xhr.responseText);
-                        // callback(null, xhr.response);
-                    } else {
-                        // callback(status, xhr.response);
-                        console.log('fail');
-                    }
-                };
-                xhr.send();
+                app.saveToDB();
+
             }, 3000); 
-        }
+        },
+		saveToDB: function(){
+			dataString = JSON.stringify(app.games_pinned);
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', '/assets/save.php?data=' + dataString, true);
+			xhr.onload = function() {
+				var status = xhr.status;
+				if (status === 200) {
+					console.log(xhr.responseText);
+					// callback(null, xhr.response);
+				} else {
+					// callback(status, xhr.response);
+					console.log('fail');
+				}
+			};
+			xhr.send();
+		}
     },
     beforeMount(){
+        // alert(user_data);
         if(steam_user_id){
             if(user_data){
                 this.games_pinned = user_data;
@@ -92,7 +102,7 @@ var app = new Vue({
         // console.log(this.games_recent);
      },
      updated(){
-        //  this.update_alert();
+         this.update_alert();
      }
 })
 
