@@ -77,10 +77,13 @@ var app = new Vue({
     },
     beforeMount(){
         if(steam_user_id){
+            if(user_data){
+                this.games_pinned = user_data;
+            }
             this.getSteamData("GetPlayerSummaries");
-            // this.getSteamData("GetUserStatsForGame");
             this.getSteamData("GetOwnedGames");
             this.getSteamData("GetRecentlyPlayedGames");
+            // this.getSteamData("GetUserStatsForGame");
         }
      },
      mounted(){
