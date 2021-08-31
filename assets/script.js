@@ -3,10 +3,11 @@ var app = new Vue({
     data: {
         games_all: [],
         games_pinned: [],
-        user: {}
         games_recent: [],
+        user: {},
+		search: ''
     },
-    methods:{
+    methods: {
         getSteamData: function(endpoint) {
             var xhr = new XMLHttpRequest();
             xhr.open('GET', '/assets/proxy.php?endpoint=' + endpoint + '&steam_user_id=' + steam_user_id, true);
@@ -58,13 +59,10 @@ var app = new Vue({
             // Prevent saving on every keypress, by resetting a timer...
             window.clearTimeout(timer);
             timer = window.setTimeout(function(){
-                
 				// Save to Vue Data
                 app.games_pinned[index].notes = event.target.value;
-                
                 // Save to DB
                 app.saveToDB();
-
             }, 3000); 
         },
 		saveToDB: function(){
@@ -84,6 +82,13 @@ var app = new Vue({
 			xhr.send();
 		}
     },
+	computed: {
+		filteredGames() {
+			return this.games_all.filter(game => {
+				return game.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1;
+			})
+		}
+	},
     beforeMount(){
         // alert(user_data);
         if(steam_user_id){
@@ -102,7 +107,7 @@ var app = new Vue({
         // console.log(this.games_recent);
      },
      updated(){
-         this.update_alert();
+        //  this.update_alert();
      }
 })
 
