@@ -1,10 +1,10 @@
 var app = new Vue({
     el: '#app',
     data: {
-        games_all: {},
+        games_all: [],
         games_pinned: [],
-        games_recent: {},
         user: {}
+        games_recent: [],
     },
     methods:{
         getSteamData: function(endpoint) {
