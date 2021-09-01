@@ -6,7 +6,6 @@ require 'steamauth/steamauth.php';
 require 'assets/router.php';
 
 // TODOs
-// - Hide games UI if not signed in / Show help view
 // - Add footer / contact
 // - Finish styling games list modal
 // - Style buttons (Pin, Unpin)

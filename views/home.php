@@ -2,6 +2,8 @@
 
             <section class="body">
                 <div class="container">
+
+					<?php if(isset($_SESSION['steamid'])) { ?>
                     <h2 style="width: 100%;">Games: Pinned</h2>
                     <div v-for="(game, index) in games_pinned" class="game pinned" :id="'game_' + game.appid" :index="index" :key="game.appid">
                         <div class="confirm-unpin">
@@ -17,6 +19,9 @@
                         <textarea :id="'notes_' + game.appid" :name="'notes_' + game.appid" rows="4" v-on:input="saveData(index, $event)">{{game.notes}}</textarea>
                         <button class="unpin" v-on:click="confirmUnpin(index, $event)">X</button>
                     </div>
+					<?php } else { ?>
+						<h2 style="width: 100%;">Welcome!</h2>
+					<?php } ?>
 
                 </div>
             </section>
