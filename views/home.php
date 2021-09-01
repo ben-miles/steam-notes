@@ -40,7 +40,7 @@
                                     <img :src="'https://cdn.cloudflare.steamstatic.com/steam/apps/' + game.appid + '/header.jpg'">
                                 <!-- /a -->
                                 <h2 class="title">{{game.name}}</h2>
-                                <button class="pin" v-on:click="pin({appid:game.appid, name:game.name})">Pin</button>
+                                <button class="pin" v-on:click="pin(game)">Pin</button>
                             </div>
                             <h2 style="width: 100%;">Games: All</h2>
                             <!-- <div v-for="game in games_all" class="game all" :id="game.appid"> -->
@@ -49,7 +49,7 @@
                                     <img :src="'https://cdn.akamai.steamstatic.com/steam/apps/' + game.appid + '/capsule_231x87.jpg'">
                                 <!-- /a -->
                                 <h2 class="title">{{game.name}}</h2>
-                                <button class="pin" v-on:click="pin({appid:game.appid, name:game.name})">Pin</button>
+                                <button class="pin" v-on:click="pin(game)">Pin</button>
                             </div>
                         </div>
                     </div>
