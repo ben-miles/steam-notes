@@ -46,9 +46,9 @@ var app = new Vue({
 			app.saveToDB();
         }, 
         confirmUnpin: function(index, event){
-            var thisPinnedGame = document.getElementsByClassName("pinned")[index];
-            var confirmationDialogue = thisPinnedGame.getElementsByClassName("confirm-unpin")[0];
-            confirmationDialogue.style.display = 'flex';
+            var confirmationDialog = event.target.parentElement.firstChild;
+            confirmationDialog.style.display = 'flex';
+        },
 		cancelUnpin: function(event){
             var confirmationDialog = event.target.parentElement;
             confirmationDialog.style.display = 'none';
