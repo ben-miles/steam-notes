@@ -5,9 +5,9 @@
                     <h2 style="width: 100%;">Games: Pinned</h2>
                     <div v-for="(game, index) in games_pinned" class="game pinned" :id="'game_' + game.appid" :index="index" :key="game.appid">
                         <div class="confirm-unpin">
-                            <h3>Unpin this game?</3>
+                            <h3>Unpin this game?</h3>
                             <p>This cannot be undone.</p>
-                            <button v-on:click="unpin(index)">Confirm Unpin</button>
+                            <button v-on:click="unpin(index)">Confirm Unpin</button><button v-on:click="cancelUnpin($event)">Cancel</button>
                         </div>
                         <!-- a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" -->
 							<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
