@@ -13,7 +13,7 @@
                             <button v-on:click="unpin(index)">Confirm Unpin</button>
                         </div>
                         <!-- a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" -->
-                            <img :src="'https://cdn.cloudflare.steamstatic.com/steam/apps/' + game.appid + '/header.jpg'">
+							<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
                         <!-- /a -->
                         <h2 class="title">{{game.name}}</h2>
                         <label :for="'notes_' + game.appid">Notes:</label>
@@ -37,7 +37,7 @@
                             <h2 style="width: 100%;">Games: Recent</h2>
                             <div v-for="game in games_recent" class="game recent" :id="game.appid">
                                 <!-- a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" -->
-                                    <img :src="'https://cdn.cloudflare.steamstatic.com/steam/apps/' + game.appid + '/header.jpg'">
+									<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
                                 <!-- /a -->
                                 <h2 class="title">{{game.name}}</h2>
                                 <button class="pin" v-on:click="pin(game)">Pin</button>
@@ -46,7 +46,7 @@
                             <!-- <div v-for="game in games_all" class="game all" :id="game.appid"> -->
                             <div v-for="game in filteredGames" class="game all" :id="game.appid">
                                 <!-- a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" -->
-                                    <img :src="'https://cdn.akamai.steamstatic.com/steam/apps/' + game.appid + '/capsule_231x87.jpg'">
+                                    <img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
                                 <!-- /a -->
                                 <h2 class="title">{{game.name}}</h2>
                                 <button class="pin" v-on:click="pin(game)">Pin</button>
