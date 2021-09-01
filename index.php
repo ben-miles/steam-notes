@@ -6,7 +6,6 @@ require 'steamauth/steamauth.php';
 require 'assets/router.php';
 
 // TODOs
-// - Add footer / contact
 // - Finish styling games list modal
 // - Style buttons (Pin, Unpin)
 // - Give visual/text feedback on DB save
