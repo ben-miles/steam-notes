@@ -6,13 +6,14 @@ require 'steamauth/steamauth.php';
 require 'assets/router.php';
 
 // TODOs
-// - Add filtering to games list modal
+// - Move modal open to main menu (signed in only)
+// - Add Cancel to Unpin confirm
+// - Hide games UI if not signed in / Show help view
+// - Add footer / contact
 // - Finish styling games list modal
-// - Add MySQL save / retrieve functions
+// - Style buttons (Pin, Unpin)
 // - Give visual/text feedback on DB save
-// - Add help view
-// - Add tour (?)
-// - Style buttons
+// - Add help view / ( tour? )
 
 // CHANGELOG
 // - v1 - 2021/08/28 - Brief abstract + features here
