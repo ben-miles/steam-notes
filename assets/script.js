@@ -37,6 +37,9 @@ var app = new Vue({
             };
             xhr.send();
         },
+		log: function(element){
+			console.log(element);
+		},
         pin: function(data){
             this.games_pinned.push(data);
 			// Save to DB
