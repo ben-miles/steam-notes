@@ -35,10 +35,12 @@
 					</a>
 					<?php
 						if(!isset($_SESSION['steamid'])) {
-							loginbutton(); //login button
+							loginbutton(); // Login Button
 						} else {
-							include ('steamauth/userInfo.php'); //To access the $steamprofile array
-							//Logout Button
+							include ('steamauth/userInfo.php'); // To access the $steamprofile array
+							// Add Games Button
+							echo '<button id="modal-open">Open</button>';
+							// Logout Button
 							logoutbutton(); 
 							// Profile Avatar
 							echo	'<a href="' . $_SESSION['steam_profileurl'] . '" class="user_avatar playerAvatar ">

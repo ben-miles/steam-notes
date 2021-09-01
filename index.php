@@ -6,7 +6,6 @@ require 'steamauth/steamauth.php';
 require 'assets/router.php';
 
 // TODOs
-// - Move modal open to main menu (signed in only)
 // - Add Cancel to Unpin confirm
 // - Hide games UI if not signed in / Show help view
 // - Add footer / contact
