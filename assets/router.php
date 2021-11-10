@@ -14,6 +14,9 @@ switch ($request) {
 			require './views/home.php';
 		}
 		break;
+	case '/about' :
+		require './views/about.php';
+		break;
     default:
         http_response_code(404);
         require './views/404.php';
