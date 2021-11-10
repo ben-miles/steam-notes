@@ -123,19 +123,23 @@ var app = new Vue({
 })
 
 var timer;
+var body = document.getElementsByTagName("body")[0];
 var modalContainer = document.getElementsByClassName("modal-container")[0];
 var modalClose = document.getElementById("modal-close");
 var modalOpen = document.getElementById("modal-open");
 modalContainer.addEventListener('click', function(event){
     if( event.target === this ){
         modalContainer.style.display = 'none';
+		body.style.overflow = "auto";
     }
 });
 modalClose.addEventListener('click', function(event){
 	modalContainer.style.display = 'none';
+	body.style.overflow = "auto";
 });
 modalOpen.addEventListener('click', function(event){
 	modalContainer.style.display = 'flex';
+	body.style.overflow = "hidden";
 });
 
 var textareas = document.getElementsByTagName( "textarea" );
