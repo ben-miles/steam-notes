@@ -10,17 +10,14 @@
 	<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
 	<link rel="stylesheet" href="assets/style.css">
 	<?php 
-
 	// Check Session for Steam ID, pass to JS
 	$steamID = !isset($_SESSION['steamid']) ? "null" : $_SESSION['steamid'];
 	echo "<script type=\"application/javascript\">var steam_user_id = " . $steamID . ";</script>";
-	
 	// Check DB for user Steam ID
 	$user_data = DB::run("SELECT data FROM users WHERE steamid=?", [$steamID])->fetchColumn();
 	if($user_data){
 		echo "<script type=\"application/javascript\">var user_data = $user_data;</script>";
 	}
-	
 	?>
 </head>
 
@@ -36,25 +33,40 @@
 				</a>
 
 				<div class="menu">
-					<a id="logo" href="https://store.steampowered.com/">
-						<img src="assets/steam_globalheader_logo.png" />
-					</a>
-					<?php
-						if(!isset($_SESSION['steamid'])) {
-							loginbutton(); // Login Button
-						} else {
-							include ('steamauth/userInfo.php'); // To access the $steamprofile array
-							// Add Games Button
-							echo '<button id="modal-open">Open</button>';
-							// Logout Button
-							logoutbutton(); 
-							// Profile Avatar
-							echo	'<a href="' . $_SESSION['steam_profileurl'] . '" class="user_avatar playerAvatar ">
-										<img src="' . $_SESSION['steam_avatar'] . '">
-									</a>';
-						}     
-						?>
-					<!-- <a href="https://google.com/">Google</a> -->
+					<ul class="nav">
+						<?php if(isset($_SESSION['steamid'])) { ?>
+						<li class="nav-item">
+							<a href="/" target="_self">My Notes</a>
+						</li>
+						<?php } ?>
+						<li class="nav-item">
+							<a href="/about" target="_self">About</a>
+						</li>
+						<?php if(!isset($_SESSION['steamid'])) { ?>
+						<li class="nav-item">
+							<?php loginbutton(); ?> 
+						</li>
+						<?php } else { ?>
+						<li class="nav-item">
+							<a href="/logout" target="_self">Logout</a>
+						</li>
+						<?php } ?>
+					</ul>
 				</div>
+				
+				<?php
+				if(isset($_SESSION['steamid'])) {
+					// Get user's Steam Profile 
+					include ('steamauth/userInfo.php');
+					// Show Steam Profile info
+					echo '<div class="user">
+					<a href="' . $_SESSION['steam_profileurl'] . '" target="_blank" class="user_avatar playerAvatar">
+					<img src="' . $_SESSION['steam_avatar'] . '">
+					<span>' . $_SESSION['steam_personaname'] . '</span>
+					</a>
+					</div>';
+				}
+				?>
+				
 			</div>
 		</section>
