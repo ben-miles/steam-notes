@@ -24,7 +24,12 @@ var app = new Vue({
                     //     app.maybenotgonnausethis = this.response.playerstats;
                     //     break;
                     case "GetOwnedGames":
-                        app.games_all = this.response.response.games;
+						app.games_all = this.response.response.games;
+						app.games_all.sort(function(a, b) {
+							var textA = a.name.toUpperCase();
+							var textB = b.name.toUpperCase();
+							return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+						});
                         break;
                     case "GetRecentlyPlayedGames":
                         app.games_recent = this.response.response.games;
