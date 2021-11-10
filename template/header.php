@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Ben's Steam Home Page</title>
+	<title>Steam Notes</title>
 	<script src="https://unpkg.com/vue"></script>
 	<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
 	<link rel="stylesheet" href="assets/style.css">
@@ -29,6 +29,12 @@
 
 		<section id="header">
 			<div class="container">
+
+				<a class="brand" href="/" target="_self">
+					<img class="logo" src="assets/logo_steam-notes.svg" alt="Steam Notes Logo"/>
+					<h1 class="site-title">Steam Notes</h1>
+				</a>
+
 				<div class="menu">
 					<a id="logo" href="https://store.steampowered.com/">
 						<img src="assets/steam_globalheader_logo.png" />
