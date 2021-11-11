@@ -6,11 +6,15 @@ require 'steamauth/steamauth.php';
 require 'assets/router.php';
 
 // TODOs
-// - Finish styling modal
-// - Finish styling games
-// - Add help view / ( tour? )
+// - Squash common CSS between .game classes
+// - Visual indication of pinned status in modal
 // - Give visual/text feedback on DB save
-// - Save to localstorage, if not signed in
+// - If not signed in 
+// - - Get fill list of games from Steam
+// - - Save to localstorage
+// - Add Dark Mode toggle
+// - Add Markdown support
+// - Add drag-and-drop sort for pinned games
 
 // CHANGELOG
 // - v1 - 2021/08/28 - Brief abstract + features here
