@@ -144,9 +144,9 @@ modalOpen.addEventListener('click', function(event){
 
 var textareas = document.getElementsByTagName( "textarea" );
 for( var textarea of textareas ){
-	textarea.style.height = (16 + textarea.scrollHeight ) + "px";
+	textarea.style.height = textarea.scrollHeight + "px";
 	textarea.addEventListener( "input", function(e){
 		e.target.style.height = "1px";
-		e.target.style.height = (40 + e.target.scrollHeight ) + "px";
+		e.target.style.height = e.target.scrollHeight + "px";
 	});
 }

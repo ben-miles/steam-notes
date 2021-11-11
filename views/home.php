@@ -27,8 +27,6 @@
 				<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
 			</a>
 			<h4 class="title">{{game.name}}</h4>
-			<label :for="'notes_' + game.appid">Notes:</label>
-			<textarea :id="'notes_' + game.appid" :name="'notes_' + game.appid" rows="4" v-on:input="saveData(index, $event)">{{game.notes}}</textarea>
 			<button class="svg-button unpin" v-on:click="confirmUnpin(index, $event)" aria-label="Unpin">
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
 					<path d="M125,110.983l-14.468-14.468l0.016-19.059l-11.273,0.031l0.021-24.793l102.312-0.254l-0.024,24.784l-11.273,0.032
@@ -38,6 +36,8 @@
 						l-8.838,8.838L55.178,76.517L64.017,67.678z"/>
 				</svg>
 			</button>
+			<label :for="'notes_' + game.appid">Notes:</label>
+			<textarea class="notes" :id="'notes_' + game.appid" :name="'notes_' + game.appid" v-on:input="saveData(index, $event)" spellcheck="false" placeholder="Describe yourself here...">{{game.notes}}</textarea>
 		</div>
 	</div>
 </section>

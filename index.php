@@ -10,7 +10,6 @@ require 'assets/router.php';
 // - Finish styling games
 // - Add help view / ( tour? )
 // - Give visual/text feedback on DB save
-// - Textbox grows to fit input
 // - Save to localstorage, if not signed in
 
 // CHANGELOG

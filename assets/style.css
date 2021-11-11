@@ -242,8 +242,20 @@ h3 {
 	text-transform: none;
     /* margin: 0 0 var(--size-lg) 0; */
 }
-.game textarea {
+.game .notes {
 	flex-grow: 1;
+	padding: 10px;
+	background-color: rgba(34,35,48,0.93);
+	border: none;
+	border-radius: 3px;
+	font-size: 13px;
+	color: #ebebeb;
+	resize: none;
+	width: 100%;
+	height: 35px;
+}
+.game .notes:focus {
+	outline: 1px solid #969696;
 }
 .game ul {
     list-style: none;
