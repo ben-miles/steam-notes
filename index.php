@@ -7,6 +7,9 @@ require 'assets/router.php';
 
 // TODOs
 // - Squash common CSS between .game classes
+// - Add transition-in to modal 
+// - Footer: Stick to bottom edge
+// - Add Google button (shortcut to Google search for game title)
 // - Visual indication of pinned status in modal
 // - Give visual/text feedback on DB save
 // - If not signed in 
