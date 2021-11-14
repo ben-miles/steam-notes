@@ -367,6 +367,14 @@ body.modal-open .modal-container {
 	animation-fill-mode: none;
 	animation-play-state: running;
 }
+@keyframes fade-in {
+	0% {
+		background-color: rgba(0,0,0,0);
+	}
+	100% {
+		background-color: rgba(0,0,0,0.75);
+	}
+}
 .modal {
 	background: #1b2838;
     display: flex;
@@ -378,6 +386,21 @@ body.modal-open .modal-container {
 	position: relative;
 	width: 100vw;
 	max-width: 450px;
+	animation-name: slide-up;
+	animation-duration: 0.4s;
+	animation-timing-function: ease-in-out;
+	animation-delay: 0s;
+	animation-iteration-count: 1;
+	animation-fill-mode: none;
+	animation-play-state: running;
+}
+@keyframes slide-up {
+	0% {
+		top: 100vh;
+	}
+	100% {
+		top: 0vh;
+	}
 }
 .modal:after {
     background: linear-gradient( 135deg, #4c80b1, #000000);
