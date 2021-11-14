@@ -129,17 +129,14 @@ var modalClose = document.getElementById("modal-close");
 var modalOpen = document.getElementById("modal-open");
 modalContainer.addEventListener('click', function(event){
     if( event.target === this ){
-        modalContainer.style.display = 'none';
-		body.style.overflow = "auto";
+		body.classList.remove("modal-open");
     }
 });
 modalClose.addEventListener('click', function(event){
-	modalContainer.style.display = 'none';
-	body.style.overflow = "auto";
+	body.classList.remove("modal-open");
 });
 modalOpen.addEventListener('click', function(event){
-	modalContainer.style.display = 'flex';
-	body.style.overflow = "hidden";
+	body.classList.add("modal-open");
 });
 
 var textareas = document.getElementsByTagName( "textarea" );

@@ -25,6 +25,10 @@ body {
     color: #c6d4df;
     font-family: "Roboto", sans-serif;
 	font-size: 14px;
+	overflow: auto;
+}
+body.modal-open {
+	overflow: hidden;
 }
 
 /* HEADINGS */
@@ -352,6 +356,16 @@ a {
     align-items: center;
     align-content: center;
     overflow: hidden;
+}
+body.modal-open .modal-container {
+	display: flex;
+	animation-name: fade-in;
+	animation-duration: 0.4s;
+	animation-timing-function: ease-in-out;
+	animation-delay: 0s;
+	animation-iteration-count: 1;
+	animation-fill-mode: none;
+	animation-play-state: running;
 }
 .modal {
 	background: #1b2838;
