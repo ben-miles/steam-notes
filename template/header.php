@@ -42,31 +42,25 @@
 						<li class="nav-item">
 							<a href="/about" target="_self">About</a>
 						</li>
-						<?php if(!isset($_SESSION['steamid'])) { ?>
-						<li class="nav-item">
-							<?php loginbutton(); ?> 
-						</li>
-						<?php } else { ?>
-						<li class="nav-item">
-							<a href="/logout" target="_self">Logout</a>
-						</li>
-						<?php } ?>
 					</ul>
 				</div>
 				
-				<?php
-				if(isset($_SESSION['steamid'])) {
-					// Get user's Steam Profile 
-					include ('steamauth/userInfo.php');
-					// Show Steam Profile info
-					echo '<div class="user">
-					<a href="' . $_SESSION['steam_profileurl'] . '" target="_blank" class="user_avatar playerAvatar">
-					<img src="' . $_SESSION['steam_avatar'] . '">
-					<span>' . $_SESSION['steam_personaname'] . '</span>
-					</a>
-					</div>';
-				}
-				?>
+				<div class="user">
+					<?php
+					if(!isset($_SESSION['steamid'])) {
+						loginbutton();
+					} else {
+						// Get user's Steam Profile 
+						include ('steamauth/userInfo.php');
+						// Show Steam Profile info
+						echo '<a href="' . $_SESSION['steam_profileurl'] . '" target="_blank" class="user_avatar">
+						<img src="' . $_SESSION['steam_avatar'] . '">
+						<span class="user_name">' . $_SESSION['steam_personaname'] . '</span>
+						</a>
+						<span class="logout">[ <a href="/logout" target="_self">Logout</a> ]</span>';
+					}
+					?>
+				</div>
 				
 			</div>
 		</section>

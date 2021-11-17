@@ -169,10 +169,17 @@ a {
 	color: #fff;
 }
 /*** HEADER > USER INFO ***/
-.user span {
+.user {
 	color: #b8b6b4;
-    display: block;
 	font-size: 11px;
+	text-align: center;
+}
+.user a:hover {
+	color: #fff;
+}
+.user .user_avatar,
+.user span {	
+    display: block;	
 }
 
 /* BODY ***************************************************************************/
