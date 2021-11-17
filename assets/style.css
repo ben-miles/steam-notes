@@ -16,6 +16,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+	transition: all ease-in-out .2s;
 }
 
 /* BODY */
@@ -66,6 +67,10 @@ a {
 	background-color: transparent;
     border: none;
 	cursor: pointer;
+	transition: none;
+}
+.svg-button span {
+	transition: none;
 }
 .svg-button svg {
 	fill: #fff;
@@ -73,6 +78,7 @@ a {
 	height: 30px;
 	opacity: 0.75;
 	pointer-events: none;
+	transition: none;
 }
 .svg-button:hover svg {
 	opacity: 1;
@@ -121,6 +127,9 @@ a {
 	flex-direction: row;
     justify-content: space-between;
 	height: 100px;
+}
+#header a {
+	transition: none;
 }
 /* HEADER > BRAND */
 .brand {
