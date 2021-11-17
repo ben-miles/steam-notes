@@ -37,7 +37,7 @@
 				</svg>
 			</button>
 			<label :for="'notes_' + game.appid">Notes:</label>
-			<textarea class="notes" :id="'notes_' + game.appid" :name="'notes_' + game.appid" v-on:input="saveData(index, $event)" spellcheck="false" placeholder="Describe yourself here...">{{game.notes}}</textarea>
+			<textarea class="notes" :id="'notes_' + game.appid" :name="'notes_' + game.appid" v-on:input="saveData(index, $event)" spellcheck="false" placeholder="Your notes here...">{{game.notes}}</textarea>
 		</div>
 	</div>
 </section>
@@ -48,7 +48,7 @@
 			<h1>My Games</h1>
 			<p>Pin games to the My Notes page to start saving notes!</p>
 			<h3>Filter</h3>
-			<input id="filter" type="text" v-model="search" placeholder="enter search term or tag">
+			<input id="filter" type="text" v-model="search" placeholder="Filter Games by Title">
 			<button class="svg-button" id="modal-close">
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="6.5 294.5 30 30" enable-background="new 6.5 294.5 30 30" xml:space="preserve">
 					<path d="M21.5,294.5c-8.285,0-15,6.716-15,15c0,8.285,6.715,15,15,15s15-6.715,15-15C36.5,301.216,29.785,294.5,21.5,294.5z
