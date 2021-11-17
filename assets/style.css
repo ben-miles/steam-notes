@@ -1,5 +1,5 @@
 /* IMPORTS */
-@import url("https://fonts.googleapis.com/css?family=Roboto:wght@300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
 
 /* VARIABLES */
 :root {
@@ -23,7 +23,7 @@ body {
     background-color: #1b2838;
     background: url(/assets/colored_body_top.png) center top no-repeat #1b2838;
     color: #c6d4df;
-    font-family: "Roboto", sans-serif;
+    font-family: "Open Sans", sans-serif;
 	font-size: 14px;
 	overflow: auto;
 }
