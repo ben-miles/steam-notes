@@ -2,10 +2,19 @@
 
 <section class="body">
 	<div class="container">
-		<h2>What is Steam Notes?</h2>
+		<div class="page-header">
+			<h1>About</h1>
+		</div>
+
+		<div class="section-header">
+			<h2>What is Steam Notes?</h2>
+		</div>
 		<p>Steam Notes is a central location for notes, links, and reminders for your favorite games on on Steam.</p> 
 		<p>If you're like me, you bounce around between </p>
-		<h2>How does Steam notes work?</h2>
+		
+		<div class="section-header">
+			<h2>How does Steam notes work?</h2>
+		</div>
 		<ol>
 			<li><b>Sign in</b> with your Steam account (you will be redirected to Steam to sign in, then returned here).</li>
 			<li><b>Pin your games</b> to your home page to create and save notes.</li>

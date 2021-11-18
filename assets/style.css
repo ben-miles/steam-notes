@@ -222,7 +222,13 @@ a {
 	justify-content: space-between;
 	margin-bottom: 15px;
 }
+.section-header {
+	margin: 20px 0 10px;
+	width: 100%;
 }
+.section-subheader {
+	margin: 20px 0 10px;
+	width: 100%;
 }
 
 /* GAMES ***************************************************************************/
