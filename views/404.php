@@ -1,13 +1,13 @@
 <?php require "./template/header.php"; ?>
 
 <!-- ======= 404 ======= -->
-<section id="404" class="404">
+<section id="404" class="body">
 	<div class="container">
 
-        <div class="section-title">
+        <div class="page-header">
           	<h1>404</h1>
-          	<p>Sit sint consectetur velit quisquam cupiditate impedit suscipit</p>
         </div>
+		<p>Sorry, the page you're looking for doesn't exist. Check your spelling and try again, or return to <a href="/" target="_self">the home page</a>.</p>
 
 	</div>
 </section>
