@@ -2,17 +2,17 @@
 ob_start();
 session_start();
 
-function logoutbutton() {
-	echo "<form action='' method='get'><button name='logout' type='submit'>Logout</button></form>"; //logout button
-}
+// function logoutbutton() {
+// 	echo "<form action='' method='get'><button name='logout' type='submit'>Logout</button></form>"; //logout button
+// }
 
-function loginbutton($buttonstyle = "rectangle") {
-	$button['rectangle'] = "01";
-	$button['square'] = "02";
-	$button = "<a href='steamauth/steamauth.php?login'><img src='https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_".$button[$buttonstyle].".png'></a>";
+// function loginbutton($buttonstyle = "rectangle") {
+// 	$button['rectangle'] = "01";
+// 	$button['square'] = "02";
+// 	$button = "<a href='steamauth/steamauth.php?login'><img src='https://steamcommunity-a.akamaihd.net/public/images/signinthroughsteam/sits_".$button[$buttonstyle].".png'></a>";
 	
-	echo $button;
-}
+// 	echo $button;
+// }
 
 if (isset($_GET['login'])){
 	require 'openid.php';

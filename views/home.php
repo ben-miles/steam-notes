@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="page-header">
 			<h1>My Notes</h1>
-			<button class="svg-button" id="modal-open">
+			<button class="svg-button green-button" id="modal-open">
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="6.5 294.5 30 30" enable-background="new 6.5 294.5 30 30" xml:space="preserve">
 					<path d="M32.106,298.894c-5.858-5.858-15.355-5.858-21.213,0c-5.859,5.858-5.858,15.354,0,21.213c5.858,5.858,15.354,5.858,21.213,0
 						C37.964,314.249,37.965,304.752,32.106,298.894z M12.484,318.516c-4.971-4.971-4.971-13.061,0-18.031s13.06-4.971,18.031,0

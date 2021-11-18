@@ -67,9 +67,9 @@ a {
 	background-color: transparent;
     border: none;
 	cursor: pointer;
-	transition: none;
 }
-.svg-button span {
+.svg-button, 
+.svg-button * {
 	transition: none;
 }
 .svg-button svg {
@@ -78,10 +78,35 @@ a {
 	height: 30px;
 	opacity: 0.75;
 	pointer-events: none;
-	transition: none;
 }
 .svg-button:hover svg {
 	opacity: 1;
+}
+.green-button {
+	border-radius: 2px;
+    background: #75b022;
+    background: -webkit-linear-gradient(left, #75b022 5%, #588a1b 95%);
+    background: linear-gradient(to right, #75b022 5%, #588a1b 95%);
+	color: #d2efa9;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 15px;
+	padding: 7px 10px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+}
+
+.green-button:hover {
+	background: #8ed629;
+    background: -webkit-linear-gradient(left, #8ed629 5%, #6aa621 95%);
+    background: linear-gradient(to right, #8ed629 5%, #6aa621 95%);
+	color: #fff;
+}
+.green-button svg {
+	width: 15px;
+	height: 15px;
+	filter: drop-shadow(1px 1px 0 rgba(0,0,0,0.4));
+	margin: 0 10px 0 0;
 }
 
 /* CONTAINER ***************************************************************************/
@@ -197,31 +222,7 @@ a {
 	justify-content: space-between;
 	margin-bottom: 15px;
 }
-#modal-open {
-	border-radius: 2px;
-    background: #75b022;
-    background: -webkit-linear-gradient(left, #75b022 5%, #588a1b 95%);
-    background: linear-gradient(to right, #75b022 5%, #588a1b 95%);
-	color: #d2efa9;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	font-size: 15px;
-	padding: 7px 10px;
-    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
 }
-
-#modal-open:hover {
-	background: #8ed629;
-    background: -webkit-linear-gradient(left, #8ed629 5%, #6aa621 95%);
-    background: linear-gradient(to right, #8ed629 5%, #6aa621 95%);
-	color: #fff;
-}
-#modal-open svg {
-	width: 15px;
-	height: 15px;
-	filter: drop-shadow(1px 1px 0 rgba(0,0,0,0.4));
-	margin: 0 10px 0 0;
 }
 
 /* GAMES ***************************************************************************/
