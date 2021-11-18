@@ -47,7 +47,6 @@ h2 {
 	font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.03em;
-	margin-bottom: 10px;
 }
 h3 {
     font-size: 14px;
@@ -232,10 +231,17 @@ a {
 }
 
 /* GAMES ***************************************************************************/
+.games {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
 .game {
     position: relative;
     display: flex;
-	align-items: center;
+	align-items: flex-start;
     flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -292,14 +298,19 @@ a {
 
 /* GAMES > PINNED */
 .game.pinned {
-    margin: 0 0 var(--size-lg) 0;
+    margin: 0 0 20px 0;
 	padding: 8px 10px;
 	align-items: flex-start;
 	justify-content: flex-start;
 	backdrop-filter: blur(20px);
     background-color: rgba(0,0,0,0.3);
     border-radius: 3px;
-    margin-bottom: 20px;
+}
+@media (min-width: 1280px) {
+    .game.pinned {
+		margin: 0 20px 20px 0;
+        width: calc( 50% - 20px );
+    }
 }
 .game.pinned .title {
 	padding-top: 6px;
@@ -341,8 +352,15 @@ a {
 .modal .game {
 	background: rgba(0,0,0,0.2);
 	border: 1px solid rgba(139,185,224,0);
-	margin-bottom: 5px;
+	margin: 0 0 5px;
 	flex-wrap: nowrap;
+	transition: none;
+}
+@media (min-width: 1024px) {
+    .modal .game {
+		margin: 0 5px 5px 0;
+        width: calc( 50% - 5px );
+    }
 }
 .modal .game:hover {
 	border: 1px solid rgba(139,185,224,0.2);

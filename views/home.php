@@ -2,6 +2,7 @@
 
 <section class="body">
 	<div class="container">
+
 		<div class="page-header">
 			<h1>My Notes</h1>
 			<button class="svg-button green-button" id="modal-open">
@@ -16,29 +17,33 @@
 				<span>Add Games</span>
 			</button>
 		</div>
-		<div v-for="(game, index) in games_pinned" class="game pinned" :id="'game_' + game.appid" :index="index" :key="game.appid">
-			<div class="confirm-unpin">
-				<h3>Unpin this game?</h3>
-				<p>This cannot be undone.</p>
-				<button v-on:click="unpin(index)">Confirm Unpin</button>
-				<button v-on:click="cancelUnpin($event)">Cancel</button>
+
+		<div class="games">
+			<div v-for="(game, index) in games_pinned" class="game pinned" :id="'game_' + game.appid" :index="index" :key="game.appid">
+				<div class="confirm-unpin">
+					<h3>Unpin this game?</h3>
+					<p>This cannot be undone.</p>
+					<button v-on:click="unpin(index)">Confirm Unpin</button>
+					<button v-on:click="cancelUnpin($event)">Cancel</button>
+				</div>
+				<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank">
+					<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
+				</a>
+				<h4 class="title">{{game.name}}</h4>
+				<button class="svg-button unpin" v-on:click="confirmUnpin(index, $event)" aria-label="Unpin">
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+						<path d="M125,110.983l-14.468-14.468l0.016-19.059l-11.273,0.031l0.021-24.793l102.312-0.254l-0.024,24.784l-11.273,0.032
+							l-0.045,55.996c15.242,10.813,25.865,27.671,28.311,47.11l-24.131,0.065L137.5,123.483V75H125V110.983z M157.555,196.571
+							l-0.047,62.478c-0.006,6.582-3.26,11.99-7.236,11.995c-3.965,0.009-7.222-5.364-7.211-11.96l0.066-76.941L157.555,196.571z
+							M141.547,180.563l-59.424,0.151c1.974-15.502,9.136-29.383,19.677-39.898L141.547,180.563z M64.017,67.678L233.08,236.742
+							l-8.838,8.838L55.178,76.517L64.017,67.678z"/>
+					</svg>
+				</button>
+				<label :for="'notes_' + game.appid">Notes:</label>
+				<textarea class="notes" :id="'notes_' + game.appid" :name="'notes_' + game.appid" v-on:input="saveData(index, $event)" spellcheck="false" placeholder="Your notes here...">{{game.notes}}</textarea>
 			</div>
-			<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank">
-				<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
-			</a>
-			<h4 class="title">{{game.name}}</h4>
-			<button class="svg-button unpin" v-on:click="confirmUnpin(index, $event)" aria-label="Unpin">
-				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-					<path d="M125,110.983l-14.468-14.468l0.016-19.059l-11.273,0.031l0.021-24.793l102.312-0.254l-0.024,24.784l-11.273,0.032
-						l-0.045,55.996c15.242,10.813,25.865,27.671,28.311,47.11l-24.131,0.065L137.5,123.483V75H125V110.983z M157.555,196.571
-						l-0.047,62.478c-0.006,6.582-3.26,11.99-7.236,11.995c-3.965,0.009-7.222-5.364-7.211-11.96l0.066-76.941L157.555,196.571z
-						M141.547,180.563l-59.424,0.151c1.974-15.502,9.136-29.383,19.677-39.898L141.547,180.563z M64.017,67.678L233.08,236.742
-						l-8.838,8.838L55.178,76.517L64.017,67.678z"/>
-				</svg>
-			</button>
-			<label :for="'notes_' + game.appid">Notes:</label>
-			<textarea class="notes" :id="'notes_' + game.appid" :name="'notes_' + game.appid" v-on:input="saveData(index, $event)" spellcheck="false" placeholder="Your notes here...">{{game.notes}}</textarea>
 		</div>
+
 	</div>
 </section>
 
@@ -46,7 +51,7 @@
 	<div class="modal">
 		<div class="modal-header">
 			<h1>My Games</h1>
-			<p>Pin games to the My Notes page to start saving notes!</p>
+			<p>Select games here to Pin them to your home page.</p>
 			<h3>Filter</h3>
 			<input id="filter" type="text" v-model="search" placeholder="Filter Games by Title">
 			<button class="svg-button" id="modal-close">
@@ -62,7 +67,9 @@
 		</div>
 		<div class="modal-body">
 			<div class="games">
-				<h3 style="margin-top:4px;">Recently Played</h3>
+				<div class="section-subheader">
+					<h3>Recently Played</h3>
+				</div>
 				<div v-for="game in games_recent" class="game recent" :id="game.appid">
 					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank">
 						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
@@ -78,7 +85,9 @@
 						</svg>
 					</button>
 				</div>
-				<h3>All Owned Games</h3>
+				<div class="section-subheader">
+					<h3>All Owned Games</h3>
+				</div>
 				<div v-for="game in filteredGames" class="game all" :id="game.appid">
 					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank">
 						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
