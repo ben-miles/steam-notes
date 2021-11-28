@@ -9,7 +9,7 @@ switch ($request) {
     case '' :
 	case '/' :
 		if(!isset($_SESSION['steamid'])) {
-			require './views/about.php';
+			require './views/welcome.php';
 		} else {
 			require './views/home.php';
 		}

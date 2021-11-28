@@ -197,6 +197,15 @@ a {
 	justify-content: space-between;
 	margin-bottom: 15px;
 }
+.page-banner {
+	background-image: url(/assets/factory.png);
+	background-size: cover;
+	background-position: top center;
+	border: 1px solid #333;
+	box-shadow: 0 0 7px 0px #000;
+	height: 350px;
+	margin-bottom: 20px;
+}
 .section-header {
 	margin: 20px 0 10px;
 	width: 100%;
@@ -518,4 +527,108 @@ body.modal-open .modal-container {
     text-align: center;
     padding: 10px;
 	min-height: 40px;
+}
+
+#hero {
+	background-image: url(/assets/cluster_bg_2.png);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    min-height: 445px;
+    margin-left: -50px;
+    margin-right: -50px;
+	padding: 10px 50px 48px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+}
+#hero .introduction {
+	padding: 0 10%;
+}
+#hero .introduction h1 {
+    font-weight: 600;
+}
+#hero .introduction p {
+	margin-bottom: 20px;
+}
+#hero .screenshot {
+	margin: 0 auto;
+}
+#hero .screenshot img {
+	max-width: 100%;
+}
+#hero .screenshot .desktop {
+	display: none;
+}
+#hero .screenshot .mobile {
+	display: block;
+}
+@media ( min-width: 1024px ) {
+	#hero {
+		min-height: unset;
+	}
+	#hero .introduction,
+	#hero .screenshot {
+		width: 50%;
+	}
+	#hero .introduction {
+		padding: 0 50px 0 0;
+	}
+	#hero .screenshot .desktop {
+		display: block;
+	}
+	#hero .screenshot .mobile {
+		display: none;
+	}
+}
+
+#getting-started {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: stretch;
+}
+#getting-started .card {
+	background: -webkit-linear-gradient( 315deg, #213c55 5%, #016968 95% );
+	background: linear-gradient( 315deg, #213c55 5%, #016968 95% );
+	box-shadow: 2.86px 6.67px 16.29px rgb(0 0 0 / 78%);
+	margin: 10px;
+	position: relative;
+}
+#getting-started .card .flag {
+	background: #d3deea;
+	box-shadow: 0 0 6px 0 #000000;
+	color: #111111;
+	position: absolute;
+    top: 12px;
+    left: 0;
+    z-index: 1;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 500;
+}
+#getting-started .card .cover {
+	width: 100%;
+}
+#getting-started .card .text {
+	padding: 20px 30px;
+}
+#getting-started .card h3 {
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+#getting-started .card p {
+	margin-bottom: 10px;
+}
+@media ( min-width: 1024px ) {
+	#getting-started {
+		flex-wrap: nowrap;
+	}
+	#getting-started .card {
+		margin: 0 10px;
+		width: 33%;
+	}
 }
