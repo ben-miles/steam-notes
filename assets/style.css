@@ -113,31 +113,7 @@ a {
     margin: 0 auto;
 	padding: 10px;
     width: 100%;
-}
-@media (min-width: 768px) {
-    .container {
-        width: 512px;
-    }
-}
-@media (min-width: 1024px) {
-    .container {
-        width: 768px;
-    }
-}
-@media (min-width: 1280px) {
-    .container {
-        width: 1024px;
-    }
-}
-@media (min-width: 1920px) {
-    .container {
-        width: 1280px;
-    }
-}
-@media (min-width: 2560px) {
-    .container {
-        width: 1920px;
-    }
+	max-width: 940px;
 }
 
 /* HEADER ***************************************************************************/
