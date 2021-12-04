@@ -1,161 +1,149 @@
-let games = [
-    {
-        title: "No Man's Sky",
-        steamId: 275850,
-        links: [
-            {
-                label: "No Man's Sky Wiki",
-                url: "https://nomanssky.gamepedia.com/"
-            },
-            {
-                label: "No Man's Sky Subreddit",
-                url: "https://www.reddit.com/r/NoMansSkyTheGame/"
+var app = new Vue({
+    el: '#app',
+    data: {
+        games_all: [],
+        games_pinned: [],
+        games_recent: [],
+        user: {},
+		search: ''
+    },
+    methods: {
+        getSteamData: function(endpoint) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/assets/proxy.php?endpoint=' + endpoint + '&steam_user_id=' + steam_user_id, true);
+            xhr.responseType = 'json';
+            xhr.onload = function() {
+              var status = xhr.status;
+              if (status === 200) {
+                // callback(null, xhr.response);
+                switch(endpoint) {
+                    case "GetPlayerSummaries":
+                        app.user = this.response.response.players[0];
+                        break;
+                    // case "GetUserStatsForGame":
+                    //     app.maybenotgonnausethis = this.response.playerstats;
+                    //     break;
+                    case "GetOwnedGames":
+						app.games_all = this.response.response.games;
+						app.games_all.sort(function(a, b) {
+							var textA = a.name.toUpperCase();
+							var textB = b.name.toUpperCase();
+							return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+						});
+                        break;
+                    case "GetRecentlyPlayedGames":
+                        app.games_recent = this.response.response.games;
+                        break;
+                }
+              } else {
+                // callback(status, xhr.response);
+                console.log('fail');
+              }
+            };
+            xhr.send();
+        },
+		log: function(element){
+			console.log(element);
+		},
+        pin: function(data){
+            this.games_pinned.push(data);
+			// Save to DB
+			app.saveToDB();
+        }, 
+        confirmUnpin: function(index, event){
+            var confirmationDialog = event.target.parentElement.firstChild;
+            confirmationDialog.style.display = 'flex';
+        },
+		cancelUnpin: function(event){
+            var confirmationDialog = event.target.parentElement;
+            confirmationDialog.style.display = 'none';
+        },
+        unpin: function(index){
+            this.games_pinned.splice(index, 1);
+			// Save to DB
+			app.saveToDB();
+        }, 
+        update_alert: function(){
+            alert('updated!');
+        },
+        saveData: function(index, event){
+            // Prevent saving on every keypress, by resetting a timer...
+            window.clearTimeout(timer);
+            timer = window.setTimeout(function(){
+				// Save to Vue Data
+                app.games_pinned[index].notes = event.target.value;
+                // Save to DB
+                app.saveToDB();
+            }, 3000); 
+        },
+		saveToDB: function(){
+			dataString = JSON.stringify(app.games_pinned);
+			var xhr = new XMLHttpRequest();
+			xhr.open('GET', '/assets/save.php?data=' + dataString, true);
+			xhr.onload = function() {
+				var status = xhr.status;
+				if (status === 200) {
+					console.log(xhr.responseText);
+					// callback(null, xhr.response);
+				} else {
+					// callback(status, xhr.response);
+					console.log('fail');
+				}
+			};
+			xhr.send();
+		}
+    },
+	computed: {
+		filteredGames() {
+			return this.games_all.filter(game => {
+				return game.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1;
+			})
+		}
+	},
+    beforeMount(){
+        // alert(user_data);
+        if(steam_user_id){
+            if(user_data){
+                this.games_pinned = user_data;
             }
-        ]
-    },
-    {
-        title: "The Long Dark",
-        steamId: 305620,
-        links: [
-            {
-                label: "The Long Dark Wiki",
-                url: "https://thelongdark.fandom.com/wiki/The_Long_Dark_Wiki/"
-            },
-            {
-                label: "The Long Dark Subreddit",
-                url: "https://www.reddit.com/r/thelongdark/"
-            }
-        ]
-    },
-    {
-        title: "Subnautica",
-        steamId: 264710,
-        links: [
-            {
-                label: "Subnautica Map",
-                url: "http://subnauticamap.io/"
-            },
-            {
-                label: "Subnautica Wiki",
-                url: "http://subnautica.wikia.com/"
-            },
-            {
-                label: "Subnautica Subreddit",
-                url: "https://www.reddit.com/r/subnautica/"
-            }
-        ]
-    },
-    {
-        title: "The Forest",
-        steamId: 242760,
-        links: []
-    },
-    {
-        title: "Raft",
-        steamId: 648800,
-        links: []
-    },
-    {
-        title: "Stardew Valley",
-        steamId: 413150,
-        links: []
-    },
-    {
-        title: "The Elder Scrolls V: Skyrim",
-        steamId: 489830,
-        links: []
-    },
-    {
-        title: "Star Wars Battlefront II",
-        steamId: 1237950,
-        links: []
-    },
-    {
-        title: "Portal 2",
-        steamId: 620,
-        links: []
-    },
-    {
-        title: "Fallout 76",
-        steamId: 1151340,
-        links: []
-    },
-    {
-        title: "Fallout New Vegas",
-        steamId: 22380,
-        links: []
-    },
-    {
-        title: "Cuphead",
-        steamId: 268910,
-        links: []
+            this.getSteamData("GetPlayerSummaries");
+            this.getSteamData("GetOwnedGames");
+            this.getSteamData("GetRecentlyPlayedGames");
+            // this.getSteamData("GetUserStatsForGame");
+        }
+     },
+     mounted(){
+        // this.clickTest();
+        //  this.buildSteamGamesList();
+        // console.log(this.games_recent);
+     },
+     updated(){
+        //  this.update_alert();
+     }
+})
+
+var timer;
+var body = document.getElementsByTagName("body")[0];
+var modalContainer = document.getElementsByClassName("modal-container")[0];
+var modalClose = document.getElementById("modal-close");
+var modalOpen = document.getElementById("modal-open");
+modalContainer.addEventListener('click', function(event){
+    if( event.target === this ){
+		body.classList.remove("modal-open");
     }
-];
-let gamesContainer = document.getElementsByClassName("games")[0];
-for(let i = 0; i < games.length; i++) {
+});
+modalClose.addEventListener('click', function(event){
+	body.classList.remove("modal-open");
+});
+modalOpen.addEventListener('click', function(event){
+	body.classList.add("modal-open");
+});
 
-    let game = document.createElement("div");
-    game.className = "game";
-    game.id = games[i].title.toLowerCase().replace(/[ ':]/g, "");
-    gamesContainer.appendChild(game);
-
-    let coverLink = document.createElement("a");
-    coverLink.className = "cover";
-    coverLink.href = `https://store.steampowered.com/app/${games[i].steamId}/`;
-    coverLink.target = "_blank"
-    game.appendChild(coverLink);
-
-    let coverImage = document.createElement("img");
-    coverImage.src = `https://cdn.cloudflare.steamstatic.com/steam/apps/${games[i].steamId}/header.jpg`;
-    coverLink.appendChild(coverImage);
-
-    let title = document.createElement("h2");
-    title.className = "title";
-    title.innerHTML = games[i].title;
-    game.appendChild(title);
-
-    let links = document.createElement("ul");
-    game.appendChild(links);
-
-    for(let ii = 0; ii < games[i].links.length; ii++) {
-
-        let link = document.createElement("li");
-        links.appendChild(link);
-
-        let url = document.createElement("a");
-        url.href = games[i].links[ii].url;
-        url.target="_blank";
-        url.innerHTML = games[i].links[ii].label;
-        link.appendChild(url);
-
-    }
-
-    let link = document.createElement("li");
-    links.appendChild(link); 
-
-    let googleLink = document.createElement("a");
-    googleLink.href = `https://www.google.com/search?q=${games[i].title}, `
-    googleLink.target="_self";
-    googleLink.innerHTML = `Google: ${games[i].title}`;
-    link.appendChild(googleLink);
-
-};
-
-// get game data from steam api
-// var steam = {};
-// steam.id = 76561197995679405;
-// steam.key = "432CE48D69015FC4CDC221371382DF51";
-// steam.url = `https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=${steam.key}&steamid=${steam.id}&format=json`;
-
-// fetch(steam.url)
-// 	.then((response) => {
-// 		console.log(response.json);
-// 		// return response.json();
-// 	})
-// 	.then((data) => {
-// 		// Work with JSON data here
-// 		console.log(data);
-// 	})
-// 	.catch((err) => {
-// 		// Do something for an error here
-// 	});
+var textareas = document.getElementsByTagName( "textarea" );
+for( var textarea of textareas ){
+	textarea.style.height = textarea.scrollHeight + "px";
+	textarea.addEventListener( "input", function(e){
+		e.target.style.height = "1px";
+		e.target.style.height = e.target.scrollHeight + "px";
+	});
+}
