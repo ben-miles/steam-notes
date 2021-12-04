@@ -1,9 +1,18 @@
 <?php
 
-// Host domain
-$domain = "your-domain-here";
+// Update the values below, and save as `config.php` 
 
-// For keeping my Steam API Key, and any other private info I may need
-$steam_api_key = "your-steam-api-key-here";
+// Host domain
+$domain = 'http[s]://fully-qualified-domain.com';
+
+// MySQL DB
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'dbname');
+define('DB_CHAR', 'latin1');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+
+// Steam API Key
+$steam_api_key = "Get your own key at https://steamcommunity.com/dev/apikey";
 
 ?>

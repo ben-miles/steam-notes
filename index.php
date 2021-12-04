@@ -18,6 +18,6 @@ require 'assets/router.php';
 // - Add drag-and-drop sort for pinned games
 
 // CHANGELOG
-// - v1 - 2021/08/28 - Brief abstract + features here
+// - v1 - 2021/12/04 - Finalized all functionality, text and graphics assets, and published online.
 
 ?>
