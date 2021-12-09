@@ -13,9 +13,14 @@
 	// Check Session for Steam ID, pass to JS
 	$steamID = !isset($_SESSION['steamid']) ? "null" : $_SESSION['steamid'];
 	echo "<script type=\"application/javascript\">var steam_user_id = " . $steamID . ";</script>";
-	// Check DB for user Steam ID
+	// Check DB for user's Steam ID
 	$user_data = DB::run("SELECT data FROM users WHERE steamid=?", [$steamID])->fetchColumn();
-	if($user_data){
+	if(array_key_exists('steamid', $_SESSION) && !$user_data){
+		// Insert new user record
+		$stmt = DB::prepare("INSERT INTO users VALUES (NULL, ?, ?)");
+		$stmt->execute([$steamID, '[]']);
+	} else {
+		// Pass user data from DB to JS
 		echo "<script type=\"application/javascript\">var user_data = $user_data;</script>";
 	}
 	?>
