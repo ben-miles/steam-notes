@@ -1,4 +1,9 @@
-# steam-browser-home-page
- Meant to be a self-hosted replacement for the default home page in Steam's web browser, for managing relevant links for your Steam games.
+# SteamNotes
+A replacement for the default home page in Steam's Overlay Web Browser, for managing links, reminders and other notes for all of your Steam games.
 
-Copy all files to public_html, and be sure to see `/assets/secret_example.php` for additional setup.
+
+**Getting started:**
+- Download or fork the repo
+- Upload files to the root of the `public_html` folder on your server
+- Populate the values of all variables in `/assets/config.php`
+- In your browser, visit the top-level domain assigned to the project
