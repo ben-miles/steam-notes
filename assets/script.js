@@ -102,6 +102,7 @@ var app = new Vue({
 	},
     beforeMount(){
         // alert(user_data);
+		// TODO: Need to get user data after first sign in.
         if(steam_user_id){
             if(user_data){
                 this.games_pinned = user_data;
