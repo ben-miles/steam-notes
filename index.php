@@ -13,7 +13,6 @@ require 'assets/router.php';
 // TODOs
 // - Squash common CSS between .game classes
 // - Add Google button (shortcut to Google search for game title)
-// - Visual indication of pinned status in modal
 // - Give visual/text feedback on DB save
 // - If not signed in 
 // - - Get fill list of games from Steam
