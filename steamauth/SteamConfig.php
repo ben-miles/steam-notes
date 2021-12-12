@@ -1,11 +1,7 @@
 <?php
-
-// Get environmental vars from config
-include_once('../assets/config.php');
-
 //Version 3.2
-$steamauth['apikey'] = $steam_api_key; // Your Steam WebAPI-Key found at https://steamcommunity.com/dev/apikey
-$steamauth['domainname'] = $domain; // The main URL of your website displayed in the login page
+$steamauth['apikey'] = "432CE48D69015FC4CDC221371382DF51"; // Your Steam WebAPI-Key found at https://steamcommunity.com/dev/apikey
+$steamauth['domainname'] = "steam-browser-home-page.test"; // The main URL of your website displayed in the login page
 $steamauth['logoutpage'] = "/"; // Page to redirect to after a successfull logout (from the directory the SteamAuth-folder is located in) - NO slash at the beginning!
 $steamauth['loginpage'] = "/"; // Page to redirect to after a successfull login (from the directory the SteamAuth-folder is located in) - NO slash at the beginning!
 
