@@ -42,6 +42,16 @@ var app = new Vue({
             };
             xhr.send();
         },
+		flexibleTextareas: function(){
+			var textareas = document.getElementsByTagName( "textarea" );
+			for( var textarea of textareas ){
+				textarea.style.height = textarea.scrollHeight + "px";
+				textarea.addEventListener( "input", function(e){
+					e.target.style.height = "auto";
+					e.target.style.height = e.target.scrollHeight + "px";
+				});
+			}
+		},
 		log: function(element){
 			console.log(element);
 		},
@@ -117,9 +127,11 @@ var app = new Vue({
         // this.clickTest();
         //  this.buildSteamGamesList();
         // console.log(this.games_recent);
+		this.flexibleTextareas();
      },
      updated(){
         //  this.update_alert();
+		this.flexibleTextareas();
      }
 })
 
@@ -139,12 +151,3 @@ modalClose.addEventListener('click', function(event){
 modalOpen.addEventListener('click', function(event){
 	body.classList.add("modal-open");
 });
-
-var textareas = document.getElementsByTagName( "textarea" );
-for( var textarea of textareas ){
-	textarea.style.height = textarea.scrollHeight + "px";
-	textarea.addEventListener( "input", function(e){
-		e.target.style.height = "1px";
-		e.target.style.height = e.target.scrollHeight + "px";
-	});
-}
