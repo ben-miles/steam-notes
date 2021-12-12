@@ -59,6 +59,7 @@ var app = new Vue({
             this.games_pinned.push(data);
 			// Save to DB
 			app.saveToDB();
+			app.updateModalPins();
         }, 
         confirmUnpin: function(index, event){
             var confirmationDialog = event.target.parentElement.firstChild;
@@ -76,6 +77,23 @@ var app = new Vue({
         update_alert: function(){
             alert('updated!');
         },
+		updateModalPins: function(){
+			// Get IDs of all pinned games
+			var appid_array = [];
+			app.games_pinned.forEach(game_pinned => { 
+				appid_array.push(game_pinned.appid); 
+			});
+			// Get all Modal Game nodes
+			var modal = document.getElementsByClassName('modal')[0];
+			var modal_games = modal.getElementsByClassName('game');
+			for( var modal_game of modal_games ){
+				console.log(modal_game.id)
+				if(appid_array.includes(parseInt(modal_game.id))){
+					console.error(modal_game.id);
+					modal_game.classList.add('pinned');
+				}
+			}
+		},
         saveData: function(index, event){
             // Prevent saving on every keypress, by resetting a timer...
             window.clearTimeout(timer);
@@ -132,6 +150,7 @@ var app = new Vue({
      updated(){
         //  this.update_alert();
 		this.flexibleTextareas();
+		this.updateModalPins();
      }
 })
 

@@ -536,6 +536,13 @@ body.modal-open .modal-container {
 .modal h3 {
 	margin: 20px 0 5px;
 }
+.modal .game.pinned {
+	padding: 0;
+	background: red;
+}
+.modal .game.pinned button {
+	display: none;
+}
 
 /* FOOTER ***************************************************************************/
 #footer {
@@ -544,6 +551,7 @@ body.modal-open .modal-container {
 	min-height: 40px;
 }
 
+/* WELCOME ***************************************************************************/
 #hero {
 	background-image: url(/assets/cluster_bg_2.png);
     background-position: bottom center;
