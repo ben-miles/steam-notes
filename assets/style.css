@@ -538,9 +538,19 @@ body.modal-open .modal-container {
 }
 .modal .game.pinned {
 	padding: 0;
-	background: red;
+	background: rgba(64, 81, 99, 0.9);
 }
 .modal .game.pinned button {
+	cursor: not-allowed;
+}
+.modal .game.pinned button:before {
+	content: "PINNED";
+	color: #fff;
+	color: #a4d007;
+	display: block;
+	margin-right: 10px;
+}
+.modal .game.pinned button svg {
 	display: none;
 }
 
