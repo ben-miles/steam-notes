@@ -59,7 +59,6 @@ var app = new Vue({
             this.games_pinned.push(data);
 			// Save to DB
 			app.saveToDB();
-			app.updateModalPins();
         }, 
         confirmUnpin: function(index, event){
             var confirmationDialog = event.target.parentElement.firstChild;
@@ -86,11 +85,22 @@ var app = new Vue({
 			// Get all Modal Game nodes
 			var modal = document.getElementsByClassName('modal')[0];
 			var modal_games = modal.getElementsByClassName('game');
+			// Loop through Modal Game nodes
 			for( var modal_game of modal_games ){
-				console.log(modal_game.id)
+				// Identify the Pin button
+				var pinButton = modal_game.getElementsByClassName('pin')[0];
+				// If their id's matches one of those from the user's pinned games,
 				if(appid_array.includes(parseInt(modal_game.id))){
-					console.error(modal_game.id);
+					// Add "pinned" to its class
 					modal_game.classList.add('pinned');
+					// Disable the Pin button
+					pinButton.disabled = true;
+				// Otherwise, 
+				} else {
+					// Remove "pinned" from its class
+					modal_game.classList.remove('pinned');
+					// Enable the Pin button
+					pinButton.disabled = false;
 				}
 			}
 		},
