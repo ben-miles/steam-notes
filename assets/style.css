@@ -540,6 +540,9 @@ body.modal-open .modal-container {
 	padding: 0;
 	background: rgba(64, 81, 99, 0.9);
 }
+.modal .game.pinned h4 {
+	padding-top: 0;
+}
 .modal .game.pinned button {
 	cursor: not-allowed;
 }
