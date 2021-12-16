@@ -35,7 +35,7 @@ var app = new Vue({
                         break;
                 }
               } else {
-                console.log('fail');
+                // console.log('fail');
               }
             };
             xhr.send();
@@ -119,9 +119,9 @@ var app = new Vue({
 			xhr.onload = function() {
 				var status = xhr.status;
 				if (status === 200) {
-					console.log(xhr.responseText);
+					// console.log(xhr.responseText);
 				} else {
-					console.log('fail');
+					// console.log('fail');
 				}
 			};
 			xhr.send();
