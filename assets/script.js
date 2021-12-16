@@ -158,14 +158,16 @@ var body = document.getElementsByTagName("body")[0];
 var modalContainer = document.getElementsByClassName("modal-container")[0];
 var modalClose = document.getElementById("modal-close");
 var modalOpen = document.getElementById("modal-open");
-modalContainer.addEventListener('click', function(event){
-    if( event.target === this ){
+if( modalContainer ) {
+	modalContainer.addEventListener('click', function(event){
+		if( event.target === this ){
+			body.classList.remove("modal-open");
+		}
+	});
+	modalClose.addEventListener('click', function(event){
 		body.classList.remove("modal-open");
-    }
-});
-modalClose.addEventListener('click', function(event){
-	body.classList.remove("modal-open");
-});
-modalOpen.addEventListener('click', function(event){
-	body.classList.add("modal-open");
-});
+	});
+	modalOpen.addEventListener('click', function(event){
+		body.classList.add("modal-open");
+	});
+}
