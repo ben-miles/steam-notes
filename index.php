@@ -12,7 +12,6 @@ require 'assets/router.php';
 
 // TODOs
 // - Style Confirm Unpin
-// - Squash common CSS between .game classes
 // - Add Google button (shortcut to Google search for game title)
 // - Give visual/text feedback on DB save
 // - If not signed in 
