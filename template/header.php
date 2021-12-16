@@ -10,19 +10,19 @@
 	<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
 	<link rel="stylesheet" href="assets/style.css">
 	<?php 
-	// Check Session for Steam ID, pass to JS
-	$steamID = !isset($_SESSION['steamid']) ? "null" : $_SESSION['steamid'];
-	echo "<script type=\"application/javascript\">var steam_user_id = " . $steamID . ";</script>";
-	// Check DB for user's Steam ID
+	// Check Session for Steam ID
+	$steamID = !isset($_SESSION['steamid']) ? "''" : $_SESSION['steamid'];
+	// Check DB for matching user record
 	$user_data = DB::run("SELECT data FROM users WHERE steamid=?", [$steamID])->fetchColumn();
-	if(array_key_exists('steamid', $_SESSION) && !$user_data){
-		// Insert new user record
+	// print_r($user_data);
+	$user_data = (empty($user_data)) ? "''" : $user_data;
+	// If there's a steamID in Session, but no user record exists in the database, 
+	if(array_key_exists('steamid', $_SESSION) && empty($user_data)){
+		// Insert a new user record
 		$stmt = DB::prepare("INSERT INTO users VALUES (NULL, ?, ?)");
 		$stmt->execute([$steamID, '[]']);
-	} else {
-		// Pass user data from DB to JS
-		echo "<script type=\"application/javascript\">var user_data = $user_data;</script>";
 	}
+	echo "<script type=\"application/javascript\">var user_data = $user_data; var steam_user_id = $steamID;</script>";
 	?>
 </head>
 

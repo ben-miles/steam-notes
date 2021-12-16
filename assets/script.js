@@ -135,15 +135,13 @@ var app = new Vue({
 		}
 	},
     beforeMount(){
-		// TODO: Need to get user data after first sign in.
         if(steam_user_id){
-            if(user_data){
-                this.games_pinned = user_data;
-            }
-            this.getSteamData("GetPlayerSummaries");
+			this.getSteamData("GetPlayerSummaries");
             this.getSteamData("GetOwnedGames");
             this.getSteamData("GetRecentlyPlayedGames");
-            // this.getSteamData("GetUserStatsForGame");
+			if(user_data){
+                this.games_pinned = user_data;
+            }
         }
 	},
 	mounted(){
