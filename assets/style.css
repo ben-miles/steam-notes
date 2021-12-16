@@ -280,30 +280,14 @@ body.modal-open .modal-container {
 	animation-fill-mode: none;
 	animation-play-state: running;
 }
-/* TODO: Clean this up! */
 @media (min-width: 768px) {
     .modal {
-		max-width: calc(512px - 40px);
+		max-width: 472px;
     }
 }
 @media (min-width: 1024px) {
     .modal {
-		max-width: calc(768px - 60px);
-    }
-}
-@media (min-width: 1280px) {
-    .modal {
-		max-width: calc(1024px - 80px);
-    }
-}
-@media (min-width: 1920px) {
-    .modal {
-		max-width: calc(1280px - 100px);
-    }
-}
-@media (min-width: 2560px) {
-    .modal {
-		max-width: calc(1920px - 120px);
+		max-width: 940px;
     }
 }
 @keyframes slide-up {
