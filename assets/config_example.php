@@ -15,4 +15,7 @@ define('DB_PASS', '');
 // Steam API Key
 $steam_api_key = "Get your own key at https://steamcommunity.com/dev/apikey";
 
+// Dev Mode
+$dev_mode = true; // TRUE = Vue Warnings & Debug Mode | FALSE = Minified Vue JS
+
 ?>

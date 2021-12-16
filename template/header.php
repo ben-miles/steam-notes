@@ -6,7 +6,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Steam Notes</title>
-	<script src="https://unpkg.com/vue"></script>
+	<?php
+	$vue_cdn_url = $dev_mode ? "https://unpkg.com/vue" : "https://unpkg.com/vue/dist/vue.min.js";
+	echo "<script src=\"$vue_cdn_url\"></script>";
+	?>
 	<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
 	<link rel="stylesheet" href="assets/style.css">
 	<?php 
