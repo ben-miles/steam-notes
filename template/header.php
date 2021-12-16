@@ -7,26 +7,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Steam Notes</title>
 	<?php
+	// Get appropriate Vue JS
 	$vue_cdn_url = $dev_mode ? "https://unpkg.com/vue" : "https://unpkg.com/vue/dist/vue.min.js";
-	echo "<script src=\"$vue_cdn_url\"></script>";
-	?>
-	<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
-	<link rel="stylesheet" href="assets/style.css">
-	<?php 
 	// Check Session for Steam ID
 	$steamID = !isset($_SESSION['steamid']) ? "''" : $_SESSION['steamid'];
 	// Check DB for matching user record
 	$user_data = DB::run("SELECT data FROM users WHERE steamid=?", [$steamID])->fetchColumn();
-	// print_r($user_data);
-	$user_data = (empty($user_data)) ? "''" : $user_data;
+	$user_data = ( empty($user_data) ) ? "''" : $user_data;
 	// If there's a steamID in Session, but no user record exists in the database, 
 	if(array_key_exists('steamid', $_SESSION) && empty($user_data)){
 		// Insert a new user record
 		$stmt = DB::prepare("INSERT INTO users VALUES (NULL, ?, ?)");
 		$stmt->execute([$steamID, '[]']);
 	}
-	echo "<script type=\"application/javascript\">var user_data = $user_data; var steam_user_id = $steamID;</script>";
+	echo "<script src=\"$vue_cdn_url\"></script>
+	<script type=\"application/javascript\">
+		var user_data = $user_data; 
+		var steam_user_id = $steamID;
+	</script>";
 	?>
+	<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+	<link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
@@ -56,7 +57,6 @@
 				<div class="user">
 					<?php
 					if(!isset($_SESSION['steamid'])) {
-						// loginbutton();
 						echo '<a class="svg-button green-button" href="/steamauth/steamauth.php?login" target="_self">
 						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
 						<path id="steam_1_" fill="#FFFFFF" d="M14.975,0C7.081,0,0.614,6.076,0,13.796l8.053,3.324c0.683-0.467,1.506-0.738,2.395-0.738
