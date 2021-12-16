@@ -18,7 +18,7 @@
 			</button>
 		</div>
 
-		<div class="games">
+		<div v-if="games_pinned.length > 0" class="games">
 			<div v-for="(game, index) in games_pinned" class="game pinned" :id="'game_' + game.appid" :index="index" :key="game.appid">
 				<div class="confirm-unpin">
 					<h3>Unpin this game?</h3>
@@ -42,6 +42,9 @@
 				<label :for="'notes_' + game.appid">Notes:</label>
 				<textarea class="notes" :id="'notes_' + game.appid" :name="'notes_' + game.appid" v-on:input="saveData(index, $event)" spellcheck="false" placeholder="Your notes here...">{{game.notes}}</textarea>
 			</div>
+		</div>
+		<div v-else style="margin-top:30px;padding:50px;backdrop-filter:blur(20px);background-color:rgba(0,0,0,0.3);border-radius:3px;">
+			<h3 style="text-align:center;"><b>To get started,</b> click the green "Add Games" button, and pin games to the home page.</h3>
 		</div>
 
 	</div>
