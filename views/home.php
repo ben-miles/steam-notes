@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		<div v-else style="margin-top:30px;padding:50px;backdrop-filter:blur(20px);background-color:rgba(0,0,0,0.3);border-radius:3px;">
-			<h3 style="text-align:center;"><b>To get started,</b> click the green "Add Games" button, and pin games to the home page.</h3>
+			<h3 style="text-align:center;"><b>To get started,</b> click the green "Add Games" button.</h3>
 		</div>
 
 	</div>
