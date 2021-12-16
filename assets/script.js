@@ -15,7 +15,6 @@ var app = new Vue({
             xhr.onload = function() {
               var status = xhr.status;
               if (status === 200) {
-                // callback(null, xhr.response);
                 switch(endpoint) {
                     case "GetPlayerSummaries":
                         app.user = this.response.response.players[0];
@@ -36,7 +35,6 @@ var app = new Vue({
                         break;
                 }
               } else {
-                // callback(status, xhr.response);
                 console.log('fail');
               }
             };
@@ -122,9 +120,7 @@ var app = new Vue({
 				var status = xhr.status;
 				if (status === 200) {
 					console.log(xhr.responseText);
-					// callback(null, xhr.response);
 				} else {
-					// callback(status, xhr.response);
 					console.log('fail');
 				}
 			};
@@ -139,7 +135,6 @@ var app = new Vue({
 		}
 	},
     beforeMount(){
-        // alert(user_data);
 		// TODO: Need to get user data after first sign in.
         if(steam_user_id){
             if(user_data){
@@ -150,15 +145,11 @@ var app = new Vue({
             this.getSteamData("GetRecentlyPlayedGames");
             // this.getSteamData("GetUserStatsForGame");
         }
-     },
-     mounted(){
-        // this.clickTest();
-        //  this.buildSteamGamesList();
-        // console.log(this.games_recent);
+	},
+	mounted(){
 		this.flexibleTextareas();
      },
      updated(){
-        //  this.update_alert();
 		this.flexibleTextareas();
 		this.updateModalPins();
      }
