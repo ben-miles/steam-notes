@@ -3,6 +3,11 @@
 <html lang="en">
 
 <head>
+	<meta charset="utf-8">
+	<title>Steam Notes</title>
+	<meta name="author" content="Benjamin Miles">
+	<meta name="description" content="SteamNotes is a convenient place to keep notes, links, and reminders for all of your favorite games on Steam.">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -10,9 +15,6 @@
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-TB7DTZB');</script>
 	<!-- End Google Tag Manager -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Steam Notes</title>
 	<?php
 	// Get appropriate Vue JS
 	$vue_cdn_url = $dev_mode ? "https://unpkg.com/vue" : "https://unpkg.com/vue/dist/vue.min.js";
@@ -89,7 +91,7 @@
 						include ('steamauth/userInfo.php');
 						// Show Steam Profile info
 						echo '<a href="' . $_SESSION['steam_profileurl'] . '" target="_blank" class="user_avatar">
-						<img src="' . $_SESSION['steam_avatar'] . '">
+						<img src="' . $_SESSION['steam_avatar'] . '" alt="' . $_SESSION['steam_personaname'] . ' on Steam">
 						<span class="user_name">' . $_SESSION['steam_personaname'] . '</span>
 						</a>
 						<span class="logout">[ <a href="/logout" target="_self">Logout</a> ]</span>';
