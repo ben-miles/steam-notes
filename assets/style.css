@@ -230,163 +230,6 @@ p a {
 	width: 100%;
 }
 
-/* GAMES ***************************************************************************/
-.games {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-items: flex-start;
-}
-.game {
-    position: relative;
-    display: flex;
-	align-items: flex-start;
-    flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-between;
-    width: 100%;
-}
-.game:hover {
-    background-color: rgba(75, 94, 114, 0.9);
-}
-.game label {
-	display: none;
-}
-.game .title {
-    color: #fff;
-    font-size: 14px;
-    font-weight: 300;
-	text-transform: none;
-}
-.game .notes {
-	flex-grow: 1;
-	padding: 10px;
-	background-color: rgba(34,35,48,0.93);
-	border: none;
-	border-radius: 3px;
-	font-size: 13px;
-	color: #ebebeb;
-	resize: none;
-	width: 100%;
-	height: 35px;
-}
-.game .notes:focus {
-	outline: 1px solid #969696;
-}
-.game ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.game li {
-    display: inline-block;
-    font-size: 12px;
-    line-height: 2;
-}
-.game li a {
-    margin-right: 3px;
-    padding: 2px 5px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #8f98a0;
-    border-radius: 3px;
-    text-decoration: none;
-}
-.game li a:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-/* GAMES > PINNED */
-.game.pinned {
-    margin: 0 0 20px 0;
-	padding: 8px 10px;
-	align-items: flex-start;
-	justify-content: flex-start;
-	backdrop-filter: blur(20px);
-    background-color: rgba(0,0,0,0.3);
-    border-radius: 3px;
-}
-@media (min-width: 1280px) {
-    .game.pinned {
-		margin: 0 20px 20px 0;
-        width: calc( 50% - 20px );
-    }
-}
-.game.pinned .title {
-	padding-top: 6px;
-}
-.game.pinned .cover {
-	display: block;
-    margin: 0 10px 10px 0;
-	line-height: 0;
-}
-.game.pinned .cover img {
-    max-width: 180px;
-}
-.game .unpin {
-	margin-left: auto;
-}
-.game .confirm-unpin {
-    display: none;
-    background: rgba(0,0,0,0.75);
-    color: #fff;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-	z-index: 1;
-}
-
-/* GAMES > MODAL */
-.modal .games {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-}
-.modal .game {
-	background: rgba(0,0,0,0.2);
-	border: 1px solid rgba(139,185,224,0);
-	margin: 0 0 5px;
-	flex-wrap: nowrap;
-	transition: none;
-}
-@media (min-width: 1024px) {
-    .modal .game {
-		margin: 0 5px 5px 0;
-        width: calc( 50% - 5px );
-    }
-}
-.modal .game:hover {
-	border: 1px solid rgba(139,185,224,0.2);
-    background: rgba(0,0,0,0.4);
-}
-.modal .game .cover {
-	min-width: 120px;
-	width: 120px;
-	margin: 0 10px 0 0;
-	line-height: 0;
-}
-.modal .game img {
-	width: 100%;
-}
-.modal .game .title {
-	margin-right: auto;
-	display: block;
-	font-size: 14px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	color: #c7d5e0;
-}
-.modal .game button {
-	align-self: center;
-}
-
 /* MODAL ***************************************************************************/
 .modal-container {
     position: absolute;
@@ -439,45 +282,18 @@ body.modal-open .modal-container {
 }
 @media (min-width: 768px) {
     .modal {
-		max-width: calc(512px - 40px);
+		max-width: 472px;
     }
 }
 @media (min-width: 1024px) {
     .modal {
-		max-width: calc(768px - 60px);
-    }
-}
-@media (min-width: 1280px) {
-    .modal {
-		max-width: calc(1024px - 80px);
-    }
-}
-@media (min-width: 1920px) {
-    .modal {
-		max-width: calc(1280px - 100px);
-    }
-}
-@media (min-width: 2560px) {
-    .modal {
-		max-width: calc(1920px - 120px);
+		max-width: 940px;
     }
 }
 @keyframes slide-up {
 	0% { top: 10vh;	}
 	100% { top: 0vh; }
 }
-/* .modal:after {
-    background: linear-gradient( 135deg, #4c80b1, #000000);
-    bottom: 0;
-    content: '';
-    display: block;
-    left: 0;
-    margin: -1px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: -1;
-} */
 .modal-header {
     background: linear-gradient( #1e2a3b, transparent );
     padding: 8px 15px;
@@ -537,6 +353,145 @@ body.modal-open .modal-container {
 	margin: 20px 0 5px;
 }
 
+/* GAMES ***************************************************************************/
+.games {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+.game {
+    position: relative;
+    display: flex;
+	align-items: flex-start;
+    flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+    width: 100%;
+}
+@media (min-width: 1024px) {
+    .game {
+        width: calc( 50% - 10px );
+    }
+}
+.game:hover {
+    background-color: rgba(75, 94, 114, 0.9);
+}
+.game label {
+	display: none;
+}
+.game .title {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+	text-transform: none;
+}
+.game .notes {
+	flex-grow: 1;
+	padding: 10px;
+	background-color: rgba(34,35,48,0.93);
+	border: none;
+	border-radius: 3px;
+	font-size: 13px;
+	color: #ebebeb;
+	resize: none;
+	width: 100%;
+	height: 35px;
+}
+.game .notes:focus {
+	outline: 1px solid #969696;
+}
+
+/* GAMES > PINNED */
+.game.pinned {
+    margin: 0 0 20px 0;
+	padding: 8px 10px;
+	align-items: flex-start;
+	flex-direction: column;
+	justify-content: flex-start;
+	backdrop-filter: blur(20px);
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 3px;
+}
+.game.pinned .title {
+	margin-bottom: 10px;
+}
+.game.pinned .cover {
+	display: block;
+    margin: 0 10px 10px 0;
+	line-height: 0;
+}
+.game.pinned .cover img {
+    max-width: 180px;
+}
+.game .unpin {
+	position: absolute;
+	top: 8px;
+	right: 10px;
+}
+.game .confirm-unpin {
+    display: none;
+    background: rgba(0,0,0,0.75);
+    color: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+	z-index: 1;
+}
+
+/* MODAL > GAMES */
+.modal .game {
+	background: rgba(0,0,0,0.2);
+	border: 1px solid rgba(139,185,224,0);
+	margin: 0 0 5px;
+	flex-wrap: nowrap;
+	transition: none;
+}
+.modal .game:hover {
+	border: 1px solid rgba(139,185,224,0.2);
+    background: rgba(0,0,0,0.4);
+}
+.modal .game .cover {
+	min-width: 120px;
+	width: 120px;
+	margin: 0 10px 0 0;
+	line-height: 0;
+}
+.modal .game img {
+	width: 100%;
+}
+.modal .game .title {
+	margin-right: auto;
+	display: block;
+	font-size: 14px;
+	color: #c7d5e0;
+}
+.modal .game button {
+	align-self: center;
+}
+/* MODAL > GAMES > PINNED */
+.modal .game.pinned {
+	padding: 0;
+	background: rgba(64, 81, 99, 0.9);
+	flex-direction: row;
+}
+.modal .game.pinned .title {
+	padding-top: 0;
+}
+.modal .game.pinned .pin {
+	cursor: not-allowed;
+}
+.modal .game.pinned .pin svg {
+	fill: #a4d007;
+}
+
 /* FOOTER ***************************************************************************/
 #footer {
     text-align: center;
@@ -544,6 +499,7 @@ body.modal-open .modal-container {
 	min-height: 40px;
 }
 
+/* WELCOME ***************************************************************************/
 #hero {
 	background-image: url(/assets/cluster_bg_2.png);
     background-position: bottom center;

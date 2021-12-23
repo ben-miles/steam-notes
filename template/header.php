@@ -4,29 +4,46 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Steam Notes</title>
-	<script src="https://unpkg.com/vue"></script>
-	<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
-	<link rel="stylesheet" href="assets/style.css">
-	<?php 
-	// Check Session for Steam ID, pass to JS
-	$steamID = !isset($_SESSION['steamid']) ? "null" : $_SESSION['steamid'];
-	echo "<script type=\"application/javascript\">var steam_user_id = " . $steamID . ";</script>";
-	// Check DB for user's Steam ID
+	<meta name="author" content="Benjamin Miles">
+	<meta name="description" content="SteamNotes is a convenient place to keep notes, links, and reminders for all of your favorite games on Steam.">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-TB7DTZB');</script>
+	<!-- End Google Tag Manager -->
+	<?php
+	// Get appropriate Vue JS
+	$vue_cdn_url = $dev_mode ? "https://unpkg.com/vue" : "https://unpkg.com/vue/dist/vue.min.js";
+	// Check Session for Steam ID
+	$steamID = !isset($_SESSION['steamid']) ? "''" : $_SESSION['steamid'];
+	// Check DB for matching user record
 	$user_data = DB::run("SELECT data FROM users WHERE steamid=?", [$steamID])->fetchColumn();
-	if(array_key_exists('steamid', $_SESSION) && !$user_data){
-		// Insert new user record
+	$user_data = ( empty($user_data) ) ? "''" : $user_data;
+	// If there's a steamID in Session, but no user record exists in the database, 
+	if(array_key_exists('steamid', $_SESSION) && empty($user_data)){
+		// Insert a new user record
 		$stmt = DB::prepare("INSERT INTO users VALUES (NULL, ?, ?)");
 		$stmt->execute([$steamID, '[]']);
-	} else {
-		// Pass user data from DB to JS
-		echo "<script type=\"application/javascript\">var user_data = $user_data;</script>";
 	}
+	echo "<script src=\"$vue_cdn_url\"></script>
+	<script type=\"application/javascript\">
+		var user_data = $user_data; 
+		var steam_user_id = $steamID;
+	</script>";
 	?>
+	<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+	<link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB7DTZB"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 	<div id="app">
 
 		<section id="header">
@@ -53,7 +70,6 @@
 				<div class="user">
 					<?php
 					if(!isset($_SESSION['steamid'])) {
-						// loginbutton();
 						echo '<a class="svg-button green-button" href="/steamauth/steamauth.php?login" target="_self">
 						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
 						<path id="steam_1_" fill="#FFFFFF" d="M14.975,0C7.081,0,0.614,6.076,0,13.796l8.053,3.324c0.683-0.467,1.506-0.738,2.395-0.738
@@ -75,7 +91,7 @@
 						include ('steamauth/userInfo.php');
 						// Show Steam Profile info
 						echo '<a href="' . $_SESSION['steam_profileurl'] . '" target="_blank" class="user_avatar">
-						<img src="' . $_SESSION['steam_avatar'] . '">
+						<img src="' . $_SESSION['steam_avatar'] . '" alt="' . $_SESSION['steam_personaname'] . ' on Steam">
 						<span class="user_name">' . $_SESSION['steam_personaname'] . '</span>
 						</a>
 						<span class="logout">[ <a href="/logout" target="_self">Logout</a> ]</span>';
