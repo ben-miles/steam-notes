@@ -16,8 +16,8 @@
 		<div class="section-header">
 			<h2>How do I make my Steam Profile "Public?"</h2>
 		</div>
-		<p><i>Via <a href="https://help.steampowered.com/en/faqs/view/588C-C67D-0251-C276" target="_blank">SteamPowered.com</a>:</i></p>
-		<p>If you are logged in to Steam, you can change your Privacy Settings by navigating to your <a href="https://steamcommunity.com/my/edit/settings?snr=" target="_blank">Profile Privacy Settings Page</a>.</p>
+		<p><i>Via <a href="https://help.steampowered.com/en/faqs/view/588C-C67D-0251-C276" target="_blank" rel="noopener">SteamPowered.com</a>:</i></p>
+		<p>If you are logged in to Steam, you can change your Privacy Settings by navigating to your <a href="https://steamcommunity.com/my/edit/settings?snr=" target="_blank" rel="noopener">Profile Privacy Settings Page</a>.</p>
 		<p>Alternatively, you can navigate to the Profile Privacy Settings page manually:</p>
 		<ol>
 			<li>From your Steam Profile, click the <i>Edit Profile</i> link under your displayed badge.</li>
@@ -28,7 +28,7 @@
 		<div class="section-header">
 			<h2>Is SteamNotes legit/safe/secure?</h2>
 		</div>
-		<p>Yes! SteamNotes is served over an encrypted connection. User authentication is handled by Steam (note the <i>https://steamcommunity.com/</i> domain in your browser's address bar when you click the <i>Sign in Through Steam</i> button). The list of your owned and recent games is retrieved via the <i>Steam Web API</i> that Valve has provided for apps like this one -- <a href="https://steamcommunity.com/dev" target="_blank">Read more about Valve's Steam Web API here</a>.</p>
+		<p>Yes! SteamNotes is served over an encrypted connection. User authentication is handled by Steam (note the <i>https://steamcommunity.com/</i> domain in your browser's address bar when you click the <i>Sign in Through Steam</i> button). The list of your owned and recent games is retrieved via the <i>Steam Web API</i> that Valve has provided for apps like this one -- <a href="https://steamcommunity.com/dev" target="_blank" rel="noopener">Read more about Valve's Steam Web API here</a>.</p>
 
 	</div>
 </section>

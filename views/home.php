@@ -26,8 +26,8 @@
 					<button v-on:click="unpin(index)">Confirm Unpin</button>
 					<button v-on:click="cancelUnpin($event)">Cancel</button>
 				</div>
-				<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank">
-					<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
+				<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" rel="noopener">
+					<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'" :alt="'game.name' + ' Cover'">
 				</a>
 				<h4 class="title">{{game.name}}</h4>
 				<button class="svg-button unpin" v-on:click="confirmUnpin(index, $event)" aria-label="Unpin">
@@ -74,8 +74,8 @@
 					<h3>Recently Played</h3>
 				</div>
 				<div v-for="game in games_recent" class="game recent" :id="game.appid">
-					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank">
-						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
+					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" rel="noopener">
+						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'" :alt="'game.name' + ' Cover'">
 					</a>
 					<h4 class="title">{{game.name}}</h2>
 					<button class="svg-button pin" v-on:click="pin(game)" aria-label="Pin">
@@ -92,8 +92,8 @@
 					<h3>All Owned Games</h3>
 				</div>
 				<div v-for="game in filteredGames" class="game all" :id="game.appid">
-					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank">
-						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
+					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" rel="noopener">
+						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'" :alt="'game.name' + ' Cover'">
 					</a>
 					<h4 class="title">{{game.name}}</h2>
 					<button class="svg-button pin" v-on:click="pin(game)" aria-label="Pin">

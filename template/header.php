@@ -90,7 +90,7 @@
 						// Get user's Steam Profile 
 						include ('steamauth/userInfo.php');
 						// Show Steam Profile info
-						echo '<a href="' . $_SESSION['steam_profileurl'] . '" target="_blank" class="user_avatar">
+						echo '<a href="' . $_SESSION['steam_profileurl'] . '" target="_blank" class="user_avatar" rel="noopener">
 						<img src="' . $_SESSION['steam_avatar'] . '" alt="' . $_SESSION['steam_personaname'] . ' on Steam">
 						<span class="user_name">' . $_SESSION['steam_personaname'] . '</span>
 						</a>
