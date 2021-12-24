@@ -22,7 +22,7 @@
 			<div v-for="(game, index) in games_pinned" class="game pinned" :id="'game_' + game.appid" :index="index" :key="game.appid">
 				<div class="confirm-unpin">
 					<h3>Remove this game?</h3>
-					<p>You can re-add it via the <b>Add Games</b> button, but <b>your notes will be erased</b>.</p>
+					<p>Your notes for <i>{{ game.name }}</i> will be erased.</p>
 					<button v-on:click="unpin(index)" class="svg-button green-button confirm">Remove It</button>
 					<button v-on:click="cancelUnpin($event)" class="svg-button gray-button cancel">Keep It</button>
 				</div>
