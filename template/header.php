@@ -70,7 +70,7 @@
 				<div class="user">
 					<?php
 					if(!isset($_SESSION['steamid'])) {
-						echo '<a class="svg-button green-button" href="/steamauth/steamauth.php?login" target="_self">
+						echo '<a class="svg-button green-button login" href="/steamauth/steamauth.php?login" target="_self">
 						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
 						<path id="steam_1_" fill="#FFFFFF" d="M14.975,0C7.081,0,0.614,6.076,0,13.796l8.053,3.324c0.683-0.467,1.506-0.738,2.395-0.738
 							c0.079,0,0.159,0.005,0.237,0.007l3.581-5.18c0-0.026,0-0.052,0-0.075c0-3.119,2.542-5.657,5.667-5.657S25.6,8.016,25.6,11.134
@@ -84,7 +84,7 @@
 							c0-1.563,1.27-2.832,2.838-2.832c1.567,0,2.837,1.269,2.837,2.832c0,1.564-1.27,2.831-2.837,2.831
 							C18.37,13.959,17.101,12.691,17.101,11.128L17.101,11.128z"/>
 						</svg>
-						<span>Sign in through <b>STEAM</b></span>
+						<span>Sign in <i>through <b>STEAM</b></i></span>
 						</a>';
 					} else {
 						// Get user's Steam Profile 
