@@ -32,7 +32,8 @@ body.modal-open {
 	overflow: hidden;
 }
 
-ol {
+ol,
+ul {
 	padding-inline-start: 40px;
 }
 p {
@@ -67,7 +68,9 @@ a {
     color: inherit;
 	text-decoration: none;
 }
-p a {
+p a,
+ol a,
+ul a {
 	color: #fff;
 	text-decoration: underline;
 }
@@ -105,7 +108,6 @@ p a {
 	padding: 7px 10px;
     text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
 }
-
 .green-button:hover {
 	background: #8ed629;
     background: -webkit-linear-gradient(left, #8ed629 5%, #6aa621 95%);
@@ -136,6 +138,14 @@ p a {
     background: -webkit-linear-gradient(left, #464d58 5%, #464d58 95%);
     background: linear-gradient(to right, #464d58 5%, #464d58 95%);
 	color: #fff;
+}
+
+/* QUOTES */
+.quote {
+	background: rgba(0,0,0,0.2); 
+	border-left: 4px solid #3a6e8b; 
+	margin: 0 20px; 
+	padding: 20px;
 }
 
 /* CONTAINER ***************************************************************************/
