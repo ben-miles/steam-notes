@@ -21,10 +21,10 @@
 		<div v-if="games_pinned.length > 0" class="games">
 			<div v-for="(game, index) in games_pinned" class="game pinned" :id="'game_' + game.appid" :index="index" :key="game.appid">
 				<div class="confirm-unpin">
-					<h3>Unpin this game?</h3>
-					<p>This cannot be undone.</p>
-					<button v-on:click="unpin(index)">Confirm Unpin</button>
-					<button v-on:click="cancelUnpin($event)">Cancel</button>
+					<h3>Remove this game?</h3>
+					<p>You can re-add it via the <b>Add Games</b> button, but <b>your notes will be erased</b>.</p>
+					<button v-on:click="unpin(index)" class="svg-button green-button confirm">Remove It</button>
+					<button v-on:click="cancelUnpin($event)" class="svg-button gray-button cancel">Keep It</button>
 				</div>
 				<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" rel="noopener">
 					<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'" :alt="'game.name' + ' Cover'">
