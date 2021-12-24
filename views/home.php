@@ -70,10 +70,11 @@
 		</div>
 		<div class="modal-body">
 			<div class="games">
-				<div class="section-subheader">
+				<!-- RECENTLY PLAYED GAMES -->
+				<div v-if="games_recent_filtered.length > 0" class="section-subheader">
 					<h3>Recently Played</h3>
 				</div>
-				<div v-for="game in games_recent" class="game recent" :id="game.appid">
+				<div v-for="game in games_recent_filtered" class="game recent" :id="game.appid">
 					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" rel="noopener">
 						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'" :alt="'game.name' + ' Cover'">
 					</a>
@@ -88,10 +89,11 @@
 						</svg>
 					</button>
 				</div>
-				<div class="section-subheader">
+				<!-- ALL OWNED GAMES -->
+				<div v-if="games_all_filtered.length > 0" class="section-subheader">
 					<h3>All Owned Games</h3>
 				</div>
-				<div v-for="game in filteredGames" class="game all" :id="game.appid">
+				<div v-for="game in games_all_filtered" class="game all" :id="game.appid">
 					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" rel="noopener">
 						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'" :alt="'game.name' + ' Cover'">
 					</a>
@@ -105,6 +107,10 @@
 								l-12.5,1.655V75z"/>
 						</svg>
 					</button>
+				</div>
+				<!-- IF NO GAMES -->
+				<div v-if="games_recent_filtered.length < 1 && games_all_filtered.length < 1">
+					<p>Sorry, no games match your query, "{{ search }}."</p>
 				</div>
 			</div>
 		</div>

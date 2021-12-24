@@ -371,6 +371,9 @@ body.modal-open .modal-container {
     top: 8px;
 }
 /* MODAL > FILTER */
+.modal-header h3 {
+	margin: 20px 0 5px;
+}
 #filter {
     background-color: rgba(103,193,245,0.2);
     color: #fff;
@@ -383,9 +386,6 @@ body.modal-open .modal-container {
 #filter::placeholder {
 	color: #fff;
 	opacity: 0.6;
-}
-.modal h3 {
-	margin: 20px 0 5px;
 }
 
 /* GAMES ***************************************************************************/
