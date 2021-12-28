@@ -11,7 +11,6 @@ require 'steamauth/steamauth.php';
 require 'assets/router.php';
 
 // TODOs
-// - Style Confirm Unpin
 // - Add Google button (shortcut to Google search for game title)
 // - Give visual/text feedback on DB save
 // - If not signed in 

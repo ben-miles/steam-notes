@@ -128,8 +128,13 @@ var app = new Vue({
 		}
     },
 	computed: {
-		filteredGames() {
+		games_all_filtered() {
 			return this.games_all.filter(game => {
+				return game.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1;
+			})
+		},
+		games_recent_filtered() {
+			return this.games_recent.filter(game => {
 				return game.name.toLowerCase().indexOf(this.search.toLowerCase()) > -1;
 			})
 		}
