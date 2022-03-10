@@ -17,7 +17,7 @@
 	<!-- End Google Tag Manager -->
 	<?php
 	// Get appropriate Vue JS
-	$vue_cdn_url = $dev_mode ? "https://unpkg.com/vue" : "https://unpkg.com/vue/dist/vue.min.js";
+	$vue_cdn_url = $dev_mode ? "https://v2.vuejs.org/js/vue.js" : "https://v2.vuejs.org/js/vue.min.js";
 	// Check Session for Steam ID
 	$steamID = !isset($_SESSION['steamid']) ? "''" : $_SESSION['steamid'];
 	// Check DB for matching user record
