@@ -7,7 +7,7 @@
 				<div class="page-header">
 					<h1>Welcome to SteamNotes!</h1>
 				</div>
-				<p style="margin-bottom: 20px;"><a href="#" style="font-weight: bold;">SteamNotes</a> is a convenient place to keep notes, links, and reminders for all of your favorite games on <a href="https://steampowered.com/" target="_blank">Steam</a>.</p> 
+				<p style="margin-bottom: 20px;"><a href="<?php echo $domain; ?>" target="_self" style="font-weight: bold;">SteamNotes</a> is a convenient place to keep notes, links, and reminders for all of your favorite games on <a href="https://steampowered.com/" target="_blank" rel="noopener">Steam</a>.</p> 
 				<p style="margin-bottom: 50px;">Create and edit notes from any web browser, on any device -- All your changes are automatically backed-up.</p>
 			</div>
 			<div class="screenshot">
@@ -73,7 +73,7 @@
 				<img class="cover" src="assets/steambrowser.jpg" alt="Screenshot of SteamNotes in the Steam Overlay Browser, while playing Fallout 4" />
 				<div class="text">
 					<h3>Have fun!</h3>
-					<p>Next time you're playing a game on Steam and need to jot something down, head to <a href="#" style="font-weight: bold;">SteamNotes</a>. All of your notes will be automatically saved for next time!</p>
+					<p>Next time you're playing a game on Steam and need to jot something down, head to <a href="<?php echo $domain; ?>" target="_self" style="font-weight: bold;">SteamNotes</a>. All of your notes will be automatically saved for next time!</p>
 				</div>
 			</div>
 		</div>

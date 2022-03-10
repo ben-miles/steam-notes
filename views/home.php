@@ -21,13 +21,13 @@
 		<div v-if="games_pinned.length > 0" class="games">
 			<div v-for="(game, index) in games_pinned" class="game pinned" :id="'game_' + game.appid" :index="index" :key="game.appid">
 				<div class="confirm-unpin">
-					<h3>Unpin this game?</h3>
-					<p>This cannot be undone.</p>
-					<button v-on:click="unpin(index)">Confirm Unpin</button>
-					<button v-on:click="cancelUnpin($event)">Cancel</button>
+					<h3>Remove this game?</h3>
+					<p>Your notes for <i>{{ game.name }}</i> will be erased.</p>
+					<button v-on:click="unpin(index)" class="svg-button green-button confirm">Remove It</button>
+					<button v-on:click="cancelUnpin($event)" class="svg-button gray-button cancel">Keep It</button>
 				</div>
-				<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank">
-					<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
+				<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" rel="noopener">
+					<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'" :alt="'game.name' + ' Cover'">
 				</a>
 				<h4 class="title">{{game.name}}</h4>
 				<button class="svg-button unpin" v-on:click="confirmUnpin(index, $event)" aria-label="Unpin">
@@ -70,12 +70,13 @@
 		</div>
 		<div class="modal-body">
 			<div class="games">
-				<div class="section-subheader">
+				<!-- RECENTLY PLAYED GAMES -->
+				<div v-if="games_recent_filtered.length > 0" class="section-subheader">
 					<h3>Recently Played</h3>
 				</div>
-				<div v-for="game in games_recent" class="game recent" :id="game.appid">
-					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank">
-						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
+				<div v-for="game in games_recent_filtered" class="game recent" :id="game.appid">
+					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" rel="noopener">
+						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'" :alt="'game.name' + ' Cover'">
 					</a>
 					<h4 class="title">{{game.name}}</h2>
 					<button class="svg-button pin" v-on:click="pin(game)" aria-label="Pin">
@@ -88,12 +89,13 @@
 						</svg>
 					</button>
 				</div>
-				<div class="section-subheader">
+				<!-- ALL OWNED GAMES -->
+				<div v-if="games_all_filtered.length > 0" class="section-subheader">
 					<h3>All Owned Games</h3>
 				</div>
-				<div v-for="game in filteredGames" class="game all" :id="game.appid">
-					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank">
-						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'">
+				<div v-for="game in games_all_filtered" class="game all" :id="game.appid">
+					<a class="cover" :href="'https://store.steampowered.com/app/' + game.appid + '/'" target="_blank" rel="noopener">
+						<img :src="'https://media.steampowered.com/steamcommunity/public/images/apps/' + game.appid + '/' + game.img_logo_url + '.jpg'" :alt="'game.name' + ' Cover'">
 					</a>
 					<h4 class="title">{{game.name}}</h2>
 					<button class="svg-button pin" v-on:click="pin(game)" aria-label="Pin">
@@ -105,6 +107,10 @@
 								l-12.5,1.655V75z"/>
 						</svg>
 					</button>
+				</div>
+				<!-- IF NO GAMES -->
+				<div v-if="games_recent_filtered.length < 1 && games_all_filtered.length < 1">
+					<p>Sorry, no games match your query, "{{ search }}."</p>
 				</div>
 			</div>
 		</div>
